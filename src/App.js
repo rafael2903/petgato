@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyles.js';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <p>oi</p>
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </Router>
