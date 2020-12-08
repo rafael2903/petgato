@@ -23,8 +23,27 @@ export const Container = styled.div`
     div.container {
         width: 50%;
         height: 100vh;
-        display: inline-block;
+        display: flex;
         background-color: #fbe9f6;
+        align-items: center;
+    }
+
+    div.container main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
     }  
+
+    @media (max-width: 800px) {
+
+        figure {
+            display: none;
+        }
+        
+        div.container {
+            width: 100%;
+        }
+    }
 
 `;

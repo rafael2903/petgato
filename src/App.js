@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyles.js';
+import Contact from './pages/Contact';
 import Login from './pages/Login';
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/contact">
+            <Contact />
           </Route>
         </Switch>
       </Router>
