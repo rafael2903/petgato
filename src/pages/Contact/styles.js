@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1.3rem 0;
+    margin: 1.2rem 0;
 
     .image-container {
         width: 28%;
@@ -91,6 +91,7 @@ export const Container = styled.div`
         grid-column-end: 3;
         grid-row-end: 4;
 
+        width: 100%;
         margin-top: 0.5rem;
         padding-bottom: 0;
         font-weight: 500;
@@ -105,5 +106,38 @@ export const Container = styled.div`
         width: 6.2rem;
         align-items: center;
         margin: 0 0 0 auto;
+    }
+
+    @media(max-width: 1000px) {
+
+        .image-container {
+            display: none;
+        }
+
+        section {
+            width: 100%;
+        }
+    }
+
+    @media(max-width: 750px) {
+
+        form {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        h2 {
+            margin-bottom: 0.4rem;
+            font-size: 1.2rem;
+        }
+
+        & {
+            margin: 1.7rem 0;
+        }
     }
 `;

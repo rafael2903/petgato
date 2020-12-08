@@ -13,21 +13,22 @@ function Contact() {
     const [email, setEmail] = useState('');
     const [description, setDescription] = useState('');
 
+    const data = {
+        name, email, description
+    }
     const setFunctions = {
         name: setName,
         email: setEmail,
         description: setDescription
     }
-
     function handleChange(e) {
-        const id = e.target.attributes.id.value;
+        const id = e.target.id;
         setFunctions[id](e.target.value);
     }
-
     function handleSubmit(e) {
         e.preventDefault();
-        // axios.post()
-
+        axios.post('http://localhost:5000/contacts', data)
+        .then(res => console.log(res))
     }
 
     return (
