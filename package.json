@@ -22,7 +22,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "wesbos"
+      "react-app",
+      "react-app/jest"
     ]
   },
   "browserslist": {
