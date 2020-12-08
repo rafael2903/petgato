@@ -5,6 +5,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1.3rem 0;
 
     .image-container {
         width: 28%;
@@ -17,6 +18,18 @@ export const Container = styled.div`
         width: 100%;
     }
 
+    h2 {
+        font-weight: 300;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+    }
+
+    h1 {
+        color: #c882b4;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+    }
+
     textarea {
         border: 1px solid #c882b4;
         font-size: 1.1rem;
@@ -24,7 +37,9 @@ export const Container = styled.div`
         padding: 10px;
         width: 100%;
         height: 100%;
-        resize: none;
+        resize: vertical;
+        min-height: 11rem;
+        max-height: 25rem;
 
         :focus {
             outline: none;
@@ -44,11 +59,15 @@ export const Container = styled.div`
         width: 100%;
     }
 
-    form {
+    section {
         width: 68%;
+    }
+
+    form {
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(2,1fr);
-        grid-template-rows: repeat(3,1fr);
+        grid-template-rows: 4rem 1fr 1fr auto;
         gap: 20px;
     }
 
@@ -72,7 +91,19 @@ export const Container = styled.div`
         grid-column-end: 3;
         grid-row-end: 4;
 
+        margin-top: 0.5rem;
         padding-bottom: 0;
         font-weight: 500;
+    }
+
+    button {
+        grid-column-start: 2;
+        grid-row-start: 4;
+        grid-column-end: 2;
+        grid-row-end: 4;
+        height: 3.0rem;
+        width: 6.2rem;
+        align-items: center;
+        margin: 0 0 0 auto;
     }
 `;
