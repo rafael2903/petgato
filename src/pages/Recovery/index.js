@@ -28,7 +28,7 @@ function Recovery() {
             <main>
                 <PinkLogo />
 
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
+                <form onSubmit={handleSubmit} >
 
                     <InputContainer>
                         <label htmlFor="email">Email</label>
@@ -46,7 +46,7 @@ function Recovery() {
                 
                 <StyledText>
                     Ainda não tem conta?&nbsp;
-                <StyledLink to="/signUp">Cadastre-se aqui</StyledLink>
+                <StyledLink to="/signup">Cadastre-se aqui</StyledLink>
                 </StyledText>
 
             </main>
