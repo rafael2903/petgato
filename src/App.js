@@ -7,6 +7,8 @@ import {
 import { GlobalStyle } from './GlobalStyles.js';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import Recovery from './pages/Recovery';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -21,8 +23,14 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/signUp">
+            <SignUp />
+          </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/recovery">
+            <Recovery />
           </Route>
         </Switch>
       </Router>
