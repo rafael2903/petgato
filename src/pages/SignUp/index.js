@@ -6,7 +6,7 @@ import Divider from '../../components/Divider';
 import InputContainer from '../../components/InputContainer';
 import AuthButton from '../../components/AuthButton';
 
-import BackgroundImage from '../../assets/Login.jpg';
+import BackgroundImage from '../../assets/SignUp.jpg';
 import StyledText from '../../components/StyledText';
 
 
@@ -65,7 +65,6 @@ function SignUp() {
 
                 </form>
 
-                <br />
                 <StyledText>
                     Já possui conta?&nbsp;
                 <StyledLink to="/login">Faça Login</StyledLink>

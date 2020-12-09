@@ -4,7 +4,8 @@ export const InputContainer = styled.div`
   
     display: inline-block;
     position: relative;
-    padding: 1.5rem 0;
+    padding: 1.4rem 0 0.7rem 0;
+    width: 100%;
 
     label {
         display: inline-block;

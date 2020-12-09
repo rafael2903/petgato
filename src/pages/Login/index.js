@@ -49,11 +49,13 @@ function Login() {
         </form>
 
         <br />
-        <StyledLink to="/recovery">Esqueci minha senha</StyledLink><br />
+        <StyledLink to="/recovery">Esqueci minha senha</StyledLink>
+
         <StyledText>
           Ainda não tem conta? &nbsp;
           <StyledLink to="/signUp">Crie sua conta</StyledLink>
         </StyledText>
+
       </main>
     </Divider>
   );

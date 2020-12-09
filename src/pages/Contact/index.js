@@ -5,6 +5,7 @@ import Main from '../../components/Main';
 import Footer from '../../components/Footer';
 import InputContainer from '../../components/InputContainer';
 import Input from '../../components/Input';
+import AuthButton from '../../components/AuthButton';
 import dog from '../../assets/contact.jpg';
 
 function Contact() {
@@ -58,7 +59,7 @@ function Contact() {
                             <label htmlFor='description'>Mensagem</label>
                             <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={handleChange} required/>
                         </InputContainer>
-                        <button type='submit'>Enviar</button>
+                        <AuthButton type='submit'>Enviar</AuthButton>
                     </form>
                 </section>
             </Container>

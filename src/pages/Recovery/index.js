@@ -6,7 +6,7 @@ import Divider from '../../components/Divider';
 import InputContainer from '../../components/InputContainer';
 import AuthButton from '../../components/AuthButton';
 
-import BackgroundImage from '../../assets/Login.jpg';
+import BackgroundImage from '../../assets/Recovery.jpg';
 import StyledText from '../../components/StyledText';
 import InputMessage from '../../components/InputMessage';
 
@@ -39,11 +39,11 @@ function Recovery() {
                     <AuthButton type="submit">RECUPERAR SENHA</AuthButton>
                 </form>
 
-                <br /><br />
                 <StyledText>
                     Lembrou a senha?&nbsp;
                 <StyledLink to="/login">Faça Login</StyledLink>
                 </StyledText>
+                
                 <StyledText>
                     Ainda não tem conta?&nbsp;
                 <StyledLink to="/signUp">Cadastre-se aqui</StyledLink>

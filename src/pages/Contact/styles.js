@@ -57,6 +57,7 @@ export const Container = styled.div`
         grid-column-start: 1;
         grid-row-start: 1;
         width: 100%;
+        margin-bottom: 0.7rem;
     }
 
     section {
@@ -92,7 +93,7 @@ export const Container = styled.div`
         grid-row-end: 4;
 
         width: 100%;
-        margin-top: 0.5rem;
+        margin-bottom: 0.7rem;
         padding-bottom: 0;
         font-weight: 500;
     }

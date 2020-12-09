@@ -33,9 +33,16 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
+        width: 100%;
+        max-width: 21rem;
+
     }  
 
-    @media (max-width: 800px) {
+    form {
+        width: 100%;
+    }
+
+    @media (max-width: 900px) {
 
         figure {
             display: none;
@@ -45,5 +52,14 @@ export const Container = styled.div`
             width: 100%;
         }
     }
+
+    @media (max-width:400px) {
+        
+        div.container main {
+            margin: 0 1.5rem;
+        }
+    }
+
+
 
 `;
