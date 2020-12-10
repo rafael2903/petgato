@@ -32,7 +32,7 @@ function Login() {
       <main>
         <PinkLogo />
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
+        <form onSubmit={handleSubmit} >
 
           <InputContainer>
             <label htmlFor="email">Email</label>
@@ -53,7 +53,7 @@ function Login() {
 
         <StyledText>
           Ainda não tem conta? &nbsp;
-          <StyledLink to="/signUp">Crie sua conta</StyledLink>
+          <StyledLink to="/signup">Crie sua conta</StyledLink>
         </StyledText>
 
       </main>

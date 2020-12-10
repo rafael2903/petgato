@@ -40,6 +40,9 @@ export const Container = styled.div`
 
     form {
         width: 100%;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
     }
 
     @media (max-width: 900px) {
