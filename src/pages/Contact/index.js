@@ -10,6 +10,8 @@ import dog from '../../assets/contact.jpg';
 
 function Contact() {
 
+    const [send,setSend] = useState(false);
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [description, setDescription] = useState('');
@@ -29,7 +31,15 @@ function Contact() {
     function handleSubmit(e) {
         e.preventDefault();
         axios.post('http://localhost:5000/contacts', data)
-        .then(res => console.log(res))
+        .then(res => {
+            if (res.status == 201) {
+                setSend(true);
+                setName('');
+                setEmail('');
+                setDescription('');
+                setTimeout(() => setSend(false), 500);
+            }
+        })
     }
 
     return (
@@ -59,7 +69,7 @@ function Contact() {
                             <label htmlFor='description'>Mensagem</label>
                             <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={handleChange} required/>
                         </InputContainer>
-                        <AuthButton type='submit'>Enviar</AuthButton>
+                        <AuthButton type='submit' send={send} >Enviar</AuthButton>
                     </form>
                 </section>
             </Container>

@@ -40,6 +40,7 @@ export const Container = styled.div`
         resize: vertical;
         min-height: 11rem;
         max-height: 25rem;
+        color: grey;
 
         :focus {
             outline: none;
@@ -58,6 +59,7 @@ export const Container = styled.div`
         grid-row-start: 1;
         width: 100%;
         margin-bottom: 0.7rem;
+        color: grey;
     }
 
     section {
@@ -107,6 +109,14 @@ export const Container = styled.div`
         width: 6.2rem;
         align-items: center;
         margin: 0 0 0 auto;
+    }
+
+    button::after {
+        content: 'Comentário enviado com sucesso!';
+        display: ${ props => props.send ? 'inline-block' : 'none' };
+        color: green;
+        font-size: 0.8rem;
+        font-weight: 300;
     }
 
     @media(max-width: 1000px) {
