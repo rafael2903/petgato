@@ -37,7 +37,7 @@ function Contact() {
                 setName('');
                 setEmail('');
                 setDescription('');
-                setTimeout(() => setSend(false), 500);
+                setTimeout(() => setSend(false), 2000);
             }
         })
     }
@@ -46,7 +46,7 @@ function Contact() {
         <>
         <Footer />
         <Main>
-            <Container>
+            <Container send={send}>
                 <figure className='image-container'>
                     <img src={dog} alt=""/>
                 </figure>
@@ -69,7 +69,7 @@ function Contact() {
                             <label htmlFor='description'>Mensagem</label>
                             <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={handleChange} required/>
                         </InputContainer>
-                        <AuthButton type='submit' send={send} >Enviar</AuthButton>
+                        <AuthButton type='submit' className='sendButton'>Enviar</AuthButton>
                     </form>
                 </section>
             </Container>

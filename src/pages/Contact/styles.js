@@ -100,7 +100,7 @@ export const Container = styled.div`
         font-weight: 500;
     }
 
-    button {
+    .sendButton {
         grid-column-start: 2;
         grid-row-start: 4;
         grid-column-end: 2;
@@ -109,14 +109,22 @@ export const Container = styled.div`
         width: 6.2rem;
         align-items: center;
         margin: 0 0 0 auto;
+        position: relative;
     }
 
-    button::after {
-        content: 'Comentário enviado com sucesso!';
+    .sendButton::after {
+        content: 'Mensagem enviada com sucesso!';
         display: ${ props => props.send ? 'inline-block' : 'none' };
         color: green;
-        font-size: 0.8rem;
-        font-weight: 300;
+        font-size: 0.9rem;
+        font-weight: 400;
+        position: absolute;
+        right: 100%;
+        top: 0px;
+        text-align: end;
+        width: 200px;
+        height: auto;
+        margin-right: 10px;
     }
 
     @media(max-width: 1000px) {
