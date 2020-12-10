@@ -15,7 +15,6 @@ function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
 
     function handleChangeName(e) {
         setName(e.target.value);
@@ -27,10 +26,6 @@ function SignUp() {
 
     function handleChangePassword(e) {
         setPassword(e.target.value);
-    }    
-    
-    function handleChangeConfirmPassword(e) {
-        setConfirmPassword(e.target.value);
     }
 
     function handleSubmit(e) {
@@ -44,7 +39,7 @@ function SignUp() {
             <main>
                 <PinkLogo />
 
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
 
                     <InputContainer>
                         <label htmlFor="name">Nome</label>
@@ -63,7 +58,7 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="password">Confirme sua senha</label>
-                        <Input type="password" id="password" value={confirmPassword} onChange={handleChangeConfirmPassword} required />
+                        <Input type="password" id="password" value={password} onChange={handleChangePassword} required />
                     </InputContainer>
 
                     <AuthButton type="submit">CADASTRAR</AuthButton>

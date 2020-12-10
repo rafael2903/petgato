@@ -16,10 +16,4 @@ export const AuthButton = styled.button`
     :hover{
         background-color: #c882b5;
     }
-
-    :focus {
-        outline: none;
-    }
-
-
 `;

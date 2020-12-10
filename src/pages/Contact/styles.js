@@ -40,7 +40,6 @@ export const Container = styled.div`
         resize: vertical;
         min-height: 11rem;
         max-height: 25rem;
-        color: grey;
 
         :focus {
             outline: none;
@@ -59,7 +58,6 @@ export const Container = styled.div`
         grid-row-start: 1;
         width: 100%;
         margin-bottom: 0.7rem;
-        color: grey;
     }
 
     section {
