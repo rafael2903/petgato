@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,6 +12,19 @@ import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
 
 function App() {
+
+  const [loggedIn, setloggedIn] = useState(() => {
+    return JSON.parse(localStorage.getItem('loggedIn'));
+  });
+
+  const [id, setId] = useState(() => {
+    return localStorage.getItem('id');
+  });
+  
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem('token');
+  });
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -21,7 +35,7 @@ function App() {
             <p>oi</p>
           </Route>
           <Route path="/login">
-            <Login />
+            {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} />}
           </Route>
           <Route path="/signup">
             <SignUp />

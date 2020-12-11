@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import StyledLink from '../../components/StyledLink';
 import Input from '../../components/Input';
 import PinkLogo from '../../components/PinkLogo';
@@ -8,10 +9,10 @@ import InputContainer from '../../components/InputContainer';
 import AuthButton from '../../components/AuthButton';
 import StyledText from '../../components/StyledText';
 
-function Login() {
+function Login( {setloggedIn, setId, setToken}) {
 
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
@@ -23,8 +24,20 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('entrou');
+    axios.post('http://localhost:3000/auth/login', {email, password})
+    .then(res => {
+      if ( res.status === 200 ) {
+      
+        setloggedIn(true)
+        localStorage.setItem('loggedIn', 'true');
 
+        setId(res.data.id);
+        localStorage.setItem('id', res.data.id);
+        
+        setToken(res.data.token);
+        localStorage.setItem('token', res.data.token);
+      }
+    })
   }
 
   return (
