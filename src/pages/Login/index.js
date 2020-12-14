@@ -9,12 +9,15 @@ import InputContainer from '../../components/InputContainer';
 import AuthButton from '../../components/AuthButton';
 import StyledText from '../../components/StyledText';
 import InputMessage from '../../components/InputMessage';
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+
 
 function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
@@ -22,6 +25,10 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
   function handleChangePassword(e) {
     setPassword(e.target.value);
+  }
+
+  function handleClick() {
+    setVisible( prev => !prev)
   }
 
   function handleSubmit(e) {
@@ -60,9 +67,10 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
           <InputContainer>
             <label htmlFor="password">Senha</label>
-            <Input type="password" id="password" value={password} onChange={handleChangePassword} required />
-            {error ? <InputMessage className='error' error={error}>Email ou senha inválido</InputMessage> : null}
-
+            <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={handleChangePassword} minLength="6" required />
+            {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
+            : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
+            {error ? <InputMessage className='error' error>Email ou senha inválidos</InputMessage> : null}
           </InputContainer>
 
           <AuthButton type="submit">ENTRAR</AuthButton>

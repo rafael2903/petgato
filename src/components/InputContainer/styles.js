@@ -14,4 +14,18 @@ export const InputContainer = styled.div`
         left: 0;
         color: #c882b4;
     }
+
+    input {
+        position: relative;
+    }
+
+    .eye {
+        position: absolute;
+        top: 2.3rem;
+        right: 15px;
+        color: #bbb;
+        cursor: pointer;
+    }
+
+
 `;

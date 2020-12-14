@@ -8,7 +8,7 @@ import AuthButton from '../../components/AuthButton';
 
 import BackgroundImage from '../../assets/SignUp.jpg';
 import StyledText from '../../components/StyledText';
-
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 function SignUp() {
 
@@ -16,6 +16,7 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [visible, setVisible] = useState(false);
 
     function handleChangeName(e) {
         setName(e.target.value);
@@ -35,9 +36,11 @@ function SignUp() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('entrou');
-
     }
+
+    function handleClick() {
+        setVisible( prev => !prev)
+      }
 
     return (
         <Divider src={BackgroundImage}>
@@ -58,12 +61,18 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="password">Senha</label>
-                        <Input type="password" id="password" value={password} onChange={handleChangePassword} required />
+                        <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={handleChangePassword} minLength="6" required />
+                        
+                        {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
+                        : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="password">Confirme sua senha</label>
-                        <Input type="password" id="password" value={confirmPassword} onChange={handleChangeConfirmPassword} required />
+                        <Input type={visible ? 'text' : 'password'} id="password" value={confirmPassword} onChange={handleChangeConfirmPassword} minLength="6" required />
+
+                        {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
+                        : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
                     </InputContainer>
 
                     <AuthButton type="submit">CADASTRAR</AuthButton>
