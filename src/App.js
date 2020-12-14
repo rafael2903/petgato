@@ -24,6 +24,9 @@ function App() {
   const [token, setToken] = useState(() => {
     return localStorage.getItem('token');
   });
+  const [admin, setAdmin] = useState(() => {
+    return localStorage.getItem('admin');
+  });
 
   return (
     <div className="App">
@@ -35,7 +38,7 @@ function App() {
             <p>oi</p>
           </Route>
           <Route path="/login">
-            {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} />}
+            {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>}
           </Route>
           <Route path="/signup">
             <SignUp />

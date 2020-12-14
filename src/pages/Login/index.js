@@ -8,11 +8,13 @@ import Divider from '../../components/Divider';
 import InputContainer from '../../components/InputContainer';
 import AuthButton from '../../components/AuthButton';
 import StyledText from '../../components/StyledText';
+import InputMessage from '../../components/InputMessage';
 
-function Login( {setloggedIn, setId, setToken}) {
+function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [error, setError] = useState(false);
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
@@ -36,8 +38,12 @@ function Login( {setloggedIn, setId, setToken}) {
         
         setToken(res.data.token);
         localStorage.setItem('token', res.data.token);
+
+        setAdmin(res.data.is_admin);
+        localStorage.setItem('admin', res.data.is_admin);
       }
     })
+    .catch( () => setError(true) );
   }
 
   return (
@@ -55,6 +61,8 @@ function Login( {setloggedIn, setId, setToken}) {
           <InputContainer>
             <label htmlFor="password">Senha</label>
             <Input type="password" id="password" value={password} onChange={handleChangePassword} required />
+            {error ? <InputMessage className='error' error={error}>Email ou senha inválido</InputMessage> : null}
+
           </InputContainer>
 
           <AuthButton type="submit">ENTRAR</AuthButton>
