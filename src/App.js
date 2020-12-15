@@ -55,6 +55,7 @@ function App() {
           <Route path="/recovery">
             <Recovery />
           </Route>
+
         </Switch>
       </Router>
     </div>
