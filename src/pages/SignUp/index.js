@@ -18,29 +18,16 @@ function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [visible, setVisible] = useState(false);
 
-    function handleChangeName(e) {
-        setName(e.target.value);
-    }
-
-    function handleChangeEmail(e) {
-        setEmail(e.target.value);
-    }
-
-    function handleChangePassword(e) {
-        setPassword(e.target.value);
-    }    
-    
-    function handleChangeConfirmPassword(e) {
-        setConfirmPassword(e.target.value);
-    }
-
     function handleSubmit(e) {
         e.preventDefault();
     }
 
-    function handleClick() {
-        setVisible( prev => !prev)
-      }
+    function passwordVisibility() {
+        if (visible) 
+            return <BsEyeSlashFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
+        else 
+            return <BsEyeFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
+    }
 
     return (
         <Divider src={BackgroundImage}>
@@ -51,28 +38,24 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="name">Nome</label>
-                        <Input type="text" id="name" value={name} onChange={handleChangeName} required />
+                        <Input type="text" id="name" value={name} onChange={ (e) => setName(e.target.value)} required />
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="email">Email</label>
-                        <Input type="email" id="email" value={email} onChange={handleChangeEmail} required />
+                        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="password">Senha</label>
-                        <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={handleChangePassword} minLength="6" required />
-                        
-                        {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
-                        : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
+                        <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="6" required />
+                        {passwordVisibility()}
                     </InputContainer>
 
                     <InputContainer>
-                        <label htmlFor="password">Confirme sua senha</label>
-                        <Input type={visible ? 'text' : 'password'} id="password" value={confirmPassword} onChange={handleChangeConfirmPassword} minLength="6" required />
-
-                        {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
-                        : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
+                        <label htmlFor="password_confirmation">Confirme sua senha</label>
+                        <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength="6" required />
+                        {passwordVisibility()}
                     </InputContainer>
 
                     <AuthButton type="submit">CADASTRAR</AuthButton>

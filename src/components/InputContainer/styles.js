@@ -15,10 +15,6 @@ export const InputContainer = styled.div`
         color: #c882b4;
     }
 
-    input {
-        position: relative;
-    }
-
     .eye {
         position: absolute;
         top: 2.3rem;

@@ -11,8 +11,10 @@ import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
 
-function App() {
+import  './App.scss' ;
 
+function App() {
+  
   const [loggedIn, setloggedIn] = useState(() => {
     return JSON.parse(localStorage.getItem('loggedIn'));
   });
@@ -37,15 +39,19 @@ function App() {
           <Route exact path="/">
             <p>oi</p>
           </Route>
+
           <Route path="/login">
             {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>}
           </Route>
+
           <Route path="/signup">
             <SignUp />
           </Route>
+
           <Route path="/contact">
             <Contact />
           </Route>
+
           <Route path="/recovery">
             <Recovery />
           </Route>

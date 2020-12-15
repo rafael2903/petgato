@@ -8,11 +8,10 @@ export const Input = styled.input`
     font-size: 1.1rem;
     color: #c882b4;
     padding: 0 10px;
+    position: relative;
 
     :focus {
         outline: none;
         border-width: 2px;
     }
-
-
 `;

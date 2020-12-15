@@ -19,18 +19,6 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
   const [error, setError] = useState(false);
   const [visible, setVisible] = useState(false)
 
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleClick() {
-    setVisible( prev => !prev)
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
     axios.post('http://localhost:3000/auth/login', {email, password})
@@ -53,6 +41,13 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
     .catch( () => setError(true) );
   }
 
+  function passwordVisibility() {
+    if (visible) 
+        return <BsEyeSlashFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
+    else 
+        return <BsEyeFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
+  }
+
   return (
     <Divider src={BackgroundImage}>
       <main>
@@ -62,15 +57,14 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
           <InputContainer>
             <label htmlFor="email">Email</label>
-            <Input type="email" id="email" value={email} onChange={handleChangeEmail} required />
+            <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </InputContainer>
 
           <InputContainer>
             <label htmlFor="password">Senha</label>
-            <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={handleChangePassword} minLength="6" required />
-            {visible ? <BsEyeSlashFill className='eye' size='20px' onClick={handleClick}/> 
-            : <BsEyeFill className='eye' size='20px' onClick={handleClick}/>}
+            <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="6" required />
             {error ? <InputMessage className='error' error>Email ou senha inválidos</InputMessage> : null}
+            {passwordVisibility()}
           </InputContainer>
 
           <AuthButton type="submit">ENTRAR</AuthButton>
