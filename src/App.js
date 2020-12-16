@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
 
+
 import  './App.scss' ;
 
 function App() {
@@ -54,6 +55,30 @@ function App() {
 
           <Route path="/recovery">
             <Recovery />
+          </Route>
+
+          <Route path="/backoffice/publications">
+          </Route>
+
+          <Route path="/backoffice/users">
+          </Route>
+
+          <Route path="/backoffice/denunciations">
+
+            <Switch>
+                <Route path="/denunciations/:id">
+                  <DenunciationModal/>
+                </Route>
+            </Switch>
+          </Route>
+
+          <Route path="/backoffice/contacts">
+
+            <Switch>
+                <Route path="/contacts/:id">
+                    <ContactModal/>
+                </Route>
+            </Switch>
           </Route>
 
         </Switch>
