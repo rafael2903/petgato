@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import { useHistory, useParams} from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from 'react'
+import { useHistory, useParams} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 import '../../App.scss';
-import { Paragraph } from './styles';
 
-function ContactModal( ){
+function DenunciationModal(){
 
-    const [data, setData] = useState({});
+    const name = 'Rafael Rodrigues';
+    const description = 'hfbhjf hf dhf hjh hfhsfs hfsfs fsklhjh hfsfh sfsh fsfhjhjhf hjfs hhhhhfk hf sfh hfs hhhufsh hurh huhfh hllhfjh hhfh h hfjh huf shu ksfhushf uh fhs uklshuh fhusi hfush h';
 
     const history = useHistory();
     const { id } = useParams();
@@ -17,9 +17,9 @@ function ContactModal( ){
     useEffect( () => {
         axios.get('http://localhost:3000/contacts/' + id)
         .then(response => response.data)
-        .then(data => setData(data));
+        .then( data => data)
     },[]);
-        
+
     function handleIgnore() {
         history.goBack();
     }
@@ -30,18 +30,21 @@ function ContactModal( ){
     }
 
   return (
-    <>
       <Modal show={true} onHide={() => history.goBack()} contentClassName='modal-border' centered>
         <Modal.Header closeButton>
-          <Modal.Title>Mensagem: {data.name} </Modal.Title>
+          <Modal.Title>Comentário de {name} </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-            <Paragraph><span className='bold'>Email: </span>{data.email}</Paragraph>
-            <Paragraph><span className='bold block'>Mensagem: </span>"{data.description}"</Paragraph>
-        </Modal.Body>
+        <Modal.Body>"{description}"</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleIgnore}>
+            Ignorar denúncia
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Apagar comentário
+          </Button>
+        </Modal.Footer>
       </Modal>
-    </>
   );
 }
 
-export default ContactModal;
+export default DenunciationModal;
