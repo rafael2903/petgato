@@ -12,6 +12,7 @@ import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
 
 import  './App.scss' ;
+import Home from './pages/Home/index.js';
 
 function App() {
   
@@ -37,7 +38,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <p>oi</p>
+            <Home />
           </Route>
 
           <Route path="/login">
