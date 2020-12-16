@@ -31,7 +31,7 @@ function Contact() {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('http://localhost:5000/contacts', data)
+        axios.post('http://localhost:3000/contacts', data)
         .then(res => {
             if (res.status === 201) {
                 setSend(true);

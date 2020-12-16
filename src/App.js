@@ -19,6 +19,7 @@ import Navbar from './components/Navbar/index.js';
 import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
 import Profile from './pages/Profile/index.js';
+import Contacts from './pages/backoffice/Contacts/index.js';
 
 function App() {
   
@@ -93,7 +94,7 @@ function App() {
               </Route>
 
               <Route path="/backoffice/contacts">
-
+                <Contacts />
                 <Switch>
                     <Route path="/backoffice/contacts/:id">
                         <ContactModal/>

@@ -1,4 +1,4 @@
-function Denunciations () {
+function Denunciations() {
 
     return (
         

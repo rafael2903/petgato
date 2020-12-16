@@ -1,4 +1,4 @@
-function Publications () {
+function Publications() {
 
     return (
         
