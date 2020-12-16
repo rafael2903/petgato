@@ -7,6 +7,7 @@ import InputContainer from '../../components/InputContainer';
 import Input from '../../components/Input';
 import AuthButton from '../../components/AuthButton';
 import dog from '../../assets/contact.jpg';
+import Navbar from '../../components/Navbar';
 
 function Contact() {
 
@@ -44,7 +45,7 @@ function Contact() {
 
     return (
         <>
-        <Footer />
+        <Navbar/>
         <Main>
             <Container send={send}>
                 <figure className='image-container'>
