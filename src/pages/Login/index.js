@@ -63,7 +63,7 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
           <InputContainer>
             <label htmlFor="password">Senha</label>
             <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="6" required />
-            {error ? <InputMessage className='error' error>Email ou senha inválidos</InputMessage> : null}
+            {error ? <InputMessage error >Email ou senha inválidos</InputMessage> : null}
             {passwordVisibility()}
           </InputContainer>
 
