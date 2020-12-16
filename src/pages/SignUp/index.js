@@ -20,22 +20,26 @@ function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [match, setMatch] = useState(true);
     const [visible, setVisible] = useState(false);
-    const [errors, setErrors] = useState('');
+    const [error, setError] = useState(false);
     const [redirect, setRedirect] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('http://localhost:3000/users', {name,email,password})
-        .then(res => {
-            setErrors(res.data.errors);
-            if ( res.status === 200 ) {
-                window.alert("Usuário registrado com sucesso!");
-                setRedirect(true);
-            }
-          })
-          .catch( (e) => {
-              setErrors(e.response.data.errors);
-            } );
+
+        if( confirmPassword !== password ){
+            setMatch(false);
+        } else {
+            setMatch(true);
+        
+            axios.post('http://localhost:3000/users', {name, email, password, password_confirmation: confirmPassword})
+            .then(res => {
+                if ( res.status === 200 ) {
+                    window.alert("Usuário registrado com sucesso!");
+                    setRedirect(true);
+                }
+            })
+            .catch( (error) => setError(error));
+        }
     }
 
     function passwordVisibility() {
@@ -43,17 +47,6 @@ function SignUp() {
             return <BsEyeSlashFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
         else 
             return <BsEyeFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
-    }
-
-    function checkPassword(passInput){
-        setConfirmPassword(passInput.value);
-        if(passInput.value !== password ){
-            passInput.setAttribute('erro', true);
-            setMatch(false);
-        } else {
-            passInput.setAttribute('erro', false);
-            setMatch(true);
-        }
     }
 
     return (
@@ -70,21 +63,21 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="email">Email</label>
-                        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                        {errors ? <InputMessage className='error' error>Este email já esta sendo utilizado</InputMessage> : null}
+                        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required error={error} />
+                        {error ? <InputMessage error>Este email já esta sendo utilizado</InputMessage> : null}
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="password">Senha</label>
-                        <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="6" required />
+                        <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="8" required />
                         {passwordVisibility()}
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="password_confirmation">Confirme sua senha</label>
-                        <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => checkPassword(e.target)} minLength="6" required />
+                        <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength="8" required error={!match}/>
                         {passwordVisibility()}
-                        {match ? null : <InputMessage className='error' error>As senhas não conferem</InputMessage> }
+                        {match ? null : <InputMessage error >As senhas não conferem</InputMessage> }
                     </InputContainer>
 
                     <AuthButton type="submit">CADASTRAR</AuthButton>
@@ -93,7 +86,7 @@ function SignUp() {
 
                 <StyledText>
                     Já possui conta?&nbsp;
-                <StyledLink to="/login">Faça Login</StyledLink>
+                    <StyledLink to="/login">Faça Login</StyledLink>
                 </StyledText>
 
             </main>

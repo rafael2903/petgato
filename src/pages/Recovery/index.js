@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import StyledLink from '../../components/StyledLink';
 import Input from '../../components/Input';
@@ -12,16 +12,11 @@ import StyledText from '../../components/StyledText';
 import InputMessage from '../../components/InputMessage';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-
 function Recovery() {
 
     const [email, setEmail] = useState('');
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
-
-    function handleChangeEmail(e) {
-        setEmail(e.target.value);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,9 +28,7 @@ function Recovery() {
                 setSuccess(true);
             }
         })
-        .catch( e => {
-            setError(true);
-        })
+        .catch( () => setError(true))
     }
 
     return (
@@ -47,9 +40,8 @@ function Recovery() {
 
                     <InputContainer>
                         <label htmlFor="email">Email</label>
-                        <Input type="email" id="email" value={email} onChange={handleChangeEmail} required />
-                        <InputMessage>Insira seu email para recuperar a senha</InputMessage>
-                        {error ? <InputMessage error>Email não encontrado</InputMessage> : null}
+                        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required error={error} />
+                        {error ? <InputMessage error>Email não encontrado</InputMessage> : <InputMessage>Insira seu email para recuperar a senha</InputMessage>}
                     </InputContainer>
 
                     <AuthButton type="submit">RECUPERAR SENHA</AuthButton>
@@ -58,12 +50,12 @@ function Recovery() {
 
                 <StyledText>
                     Lembrou a senha?&nbsp;
-                <StyledLink to="/login">Faça Login</StyledLink>
+                    <StyledLink to="/login">Faça Login</StyledLink>
                 </StyledText>
                 
                 <StyledText>
                     Ainda não tem conta?&nbsp;
-                <StyledLink to="/signup">Cadastre-se aqui</StyledLink>
+                    <StyledLink to="/signup">Cadastre-se aqui</StyledLink>
                 </StyledText>
 
             </main>
