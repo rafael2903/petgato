@@ -33,7 +33,7 @@ function Contact() {
         e.preventDefault();
         axios.post('http://localhost:5000/contacts', data)
         .then(res => {
-            if (res.status == 201) {
+            if (res.status === 201) {
                 setSend(true);
                 setName('');
                 setEmail('');

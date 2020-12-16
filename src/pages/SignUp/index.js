@@ -29,8 +29,6 @@ function SignUp() {
         if( confirmPassword !== password ){
             setMatch(false);
         } else {
-            setMatch(true);
-        
             axios.post('http://localhost:3000/users', {name, email, password, password_confirmation: confirmPassword})
             .then(res => {
                 if ( res.status === 200 ) {
