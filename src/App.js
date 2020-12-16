@@ -15,6 +15,9 @@ import DenunciationModal from './components/DenunciationModal/index.js';
 import ContactModal from './components/ContactModal/index.js';
 
 import  './App.scss' ;
+import Navbar from './components/Navbar/index.js';
+import About from './pages/About/index.js';
+import Footer from './components/Footer/index.js';
 
 function App() {
   
@@ -39,9 +42,6 @@ function App() {
 
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
 
           <Route path="/login">
             {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>}
@@ -51,38 +51,54 @@ function App() {
             <SignUp />
           </Route>
 
-          <Route path="/contact">
-            <Contact />
-          </Route>
-
           <Route path="/recovery">
             <Recovery />
           </Route>
 
-          <Route path="/backoffice/publications">
-          </Route>
-
-          <Route path="/backoffice/users">
-          </Route>
-
-          <Route path="/backoffice/denunciations">
+          <Route path='/'>
+            <Navbar/>
 
             <Switch>
-                <Route path="/backoffice/denunciations/:id">
-                  <DenunciationModal/>
-                </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
+
+              <Route path="/contact">
+                <Contact />
+              </Route>
+
+              <Route path="/about">
+                <About />
+              </Route>
+
+              <Route path="/backoffice/publications">
+              </Route>
+
+              <Route path="/backoffice/users">
+              </Route>
+
+              <Route path="/backoffice/denunciations">
+
+                <Switch>
+                    <Route path="/backoffice/denunciations/:id">
+                      <DenunciationModal/>
+                    </Route>
+                </Switch>
+                
+              </Route>
+
+              <Route path="/backoffice/contacts">
+
+                <Switch>
+                    <Route path="/backoffice/contacts/:id">
+                        <ContactModal/>
+                    </Route>
+                </Switch>
+
+              </Route>
             </Switch>
-            
-          </Route>
 
-          <Route path="/backoffice/contacts">
-
-            <Switch>
-                <Route path="/backoffice/contacts/:id">
-                    <ContactModal/>
-                </Route>
-            </Switch>
-
+            <Footer />
           </Route>
 
         </Switch>

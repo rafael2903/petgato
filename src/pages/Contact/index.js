@@ -44,8 +44,6 @@ function Contact() {
     }
 
     return (
-        <>
-        <Navbar/>
         <Main>
             <Container send={send}>
                 <figure className='image-container'>
@@ -75,8 +73,6 @@ function Contact() {
                 </section>
             </Container>
         </Main>
-        <Footer />
-        </>
     );
 }
 
