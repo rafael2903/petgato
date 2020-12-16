@@ -18,6 +18,7 @@ import  './App.scss' ;
 import Navbar from './components/Navbar/index.js';
 import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
+import Profile from './pages/Profile/index.js';
 
 function App() {
   
@@ -56,7 +57,7 @@ function App() {
           </Route>
 
           <Route path='/'>
-            <Navbar/>
+            <Navbar loggedIn={loggedIn} id={id} />
 
             <Switch>
               <Route exact path="/">
@@ -69,6 +70,10 @@ function App() {
 
               <Route path="/about">
                 <About />
+              </Route>
+
+              <Route path="/user/:id">
+                <Profile />
               </Route>
 
               <Route path="/backoffice/publications">

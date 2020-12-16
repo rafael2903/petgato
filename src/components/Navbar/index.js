@@ -3,22 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container, Icon, Menu } from './styles';
 import logo from '../../assets/gatinho_petgato_branco.svg';
 
-const Navbar = () => {
-
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState('');
+const Navbar = ( {loggedIn, id} ) => {
 
     const location = useLocation();
 
-    useEffect(() => {
-        setLoggedIn( localStorage.getItem('loggedIn') );
-        setUser( localStorage.getItem('id') );
-        
-    }, [])
-
-
     return(
-        <Container onClick={ () => console.log("location.pathname")}>
+        <Container>
             <Icon src={logo}/>
             <Menu>
                 <li className={ location.pathname === '/' ? "active" : ""}>
@@ -38,7 +28,7 @@ const Navbar = () => {
                 </li>
                 <li>
                 {loggedIn ?
-                    <Link to={'/' + user}>Minha Conta</Link> :
+                    <Link to={'/user' + id}>Minha Conta</Link> :
                     <Link to='/login'>Entrar</Link>
                 }
                 </li>

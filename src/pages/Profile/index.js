@@ -1,4 +1,5 @@
-const About = () => {
+
+function Profile() {
 
     return(
         <>
@@ -7,4 +8,4 @@ const About = () => {
     );
 }
 
-export default About;
+export default Profile;
