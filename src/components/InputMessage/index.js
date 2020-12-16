@@ -1,6 +1,6 @@
 import { MensageContainer } from './styles';
 
-function InputMessage( {error, children} ) {
+function InputMessage( {error = null, children} ) {
     return (
         <MensageContainer error={error}>{children}</MensageContainer>
     );

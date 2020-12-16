@@ -10,9 +10,11 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
+import Home from './pages/Home/index.js';
+import DenunciationModal from './components/DenunciationModal/index.js';
+import ContactModal from './components/ContactModal/index.js';
 
 import  './App.scss' ;
-import Home from './pages/Home/index.js';
 
 function App() {
   
@@ -56,6 +58,33 @@ function App() {
           <Route path="/recovery">
             <Recovery />
           </Route>
+
+          <Route path="/backoffice/publications">
+          </Route>
+
+          <Route path="/backoffice/users">
+          </Route>
+
+          <Route path="/backoffice/denunciations">
+
+            <Switch>
+                <Route path="/backoffice/denunciations/:id">
+                  <DenunciationModal/>
+                </Route>
+            </Switch>
+            
+          </Route>
+
+          <Route path="/backoffice/contacts">
+
+            <Switch>
+                <Route path="/backoffice/contacts/:id">
+                    <ContactModal/>
+                </Route>
+            </Switch>
+
+          </Route>
+
         </Switch>
       </Router>
     </div>

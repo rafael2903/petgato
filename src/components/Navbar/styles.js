@@ -27,6 +27,7 @@ export const Menu = styled.ul`
         font-size: 1.4rem;
         margin: 0px 20px;
         list-style: none;
+        font-weight: 300;
     }
 
     a{
@@ -39,6 +40,6 @@ export const Menu = styled.ul`
     }
 
     .active{
-        font-weight: 600;
+        font-weight: 500;
     }
 `;
