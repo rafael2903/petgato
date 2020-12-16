@@ -31,6 +31,7 @@ function Recovery() {
                 window.alert("Uma nova senha foi encaminhada para seu email.");
                 setError(false);
                 setSuccess(true);
+                setEmail('');
             }
         })
         .catch( e => {

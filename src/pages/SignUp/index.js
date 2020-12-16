@@ -25,17 +25,22 @@ function SignUp() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        axios.post('http://localhost:3000/users', {name,email,password})
-        .then(res => {
-            setErrors(res.data.errors);
-            if ( res.status === 200 ) {
-                window.alert("Usuário registrado com sucesso!");
-                setRedirect(true);
-            }
-          })
-          .catch( (e) => {
-              setErrors(e.response.data.errors);
+        if(confirmPassword === password){
+            axios.post('http://localhost:3000/users', {name,email,password})
+            .then(res => {
+                setErrors(res.data.errors);
+                if ( res.status === 200 ) {
+                    window.alert("Usuário registrado com sucesso!");
+                    setRedirect(true);
+                    setErrors('');
+                }
+            })
+            .catch( (e) => {
+                setErrors(e.response.data.errors);
             } );
+        } else {
+            setMatch(false);
+        }
     }
 
     function passwordVisibility() {
@@ -46,12 +51,12 @@ function SignUp() {
     }
 
     function checkPassword(passInput){
-        setConfirmPassword(passInput.value);
+        //setConfirmPassword(passInput.value);
         if(passInput.value !== password ){
-            passInput.setAttribute('erro', true);
+            passInput.setAttribute('error', true);
             setMatch(false);
         } else {
-            passInput.setAttribute('erro', false);
+            passInput.setAttribute('error', false);
             setMatch(true);
         }
     }
@@ -70,7 +75,8 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="email">Email</label>
-                        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <Input type="email" id="email" value={email} onBlur={() => setErrors('')}
+                        onChange={(e) => setEmail(e.target.value)} required error={errors}/>
                         {errors ? <InputMessage className='error' error>Este email já esta sendo utilizado</InputMessage> : null}
                     </InputContainer>
 
@@ -82,7 +88,8 @@ function SignUp() {
 
                     <InputContainer>
                         <label htmlFor="password_confirmation">Confirme sua senha</label>
-                        <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => checkPassword(e.target)} minLength="6" required />
+                        <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} error={!match}
+                        onChange={(e) => setConfirmPassword(e.target.value)} onBlur={e => checkPassword(e.target)} minLength="6" required />
                         {passwordVisibility()}
                         {match ? null : <InputMessage className='error' error>As senhas não conferem</InputMessage> }
                     </InputContainer>
