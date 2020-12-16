@@ -76,7 +76,7 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
 
         <StyledText>
           Ainda não tem conta? &nbsp;
-          <StyledLink to="/signup">Crie sua conta</StyledLink>
+          <StyledLink to="/join">Crie sua conta</StyledLink>
         </StyledText>
 
       </main>
