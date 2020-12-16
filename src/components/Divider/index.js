@@ -20,4 +20,4 @@ Divider.propTypes = {
     children: PropTypes.element,
 };
 
-export default Divider
+export default Divider;

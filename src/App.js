@@ -13,6 +13,8 @@ import SignUp from './pages/SignUp';
 
 
 import  './App.scss' ;
+import DenunciationModal from './components/DenunciationModal/index.js';
+import ContactModal from './components/ContactModal/index.js';
 
 function App() {
   
@@ -66,19 +68,21 @@ function App() {
           <Route path="/backoffice/denunciations">
 
             <Switch>
-                <Route path="/denunciations/:id">
+                <Route path="/backoffice/denunciations/:id">
                   <DenunciationModal/>
                 </Route>
             </Switch>
+            
           </Route>
 
           <Route path="/backoffice/contacts">
 
             <Switch>
-                <Route path="/contacts/:id">
+                <Route path="/backoffice/contacts/:id">
                     <ContactModal/>
                 </Route>
             </Switch>
+
           </Route>
 
         </Switch>

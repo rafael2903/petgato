@@ -4,4 +4,40 @@
 @import  "~bootstrap/scss/_modal.scss";
 @import  "~bootstrap/scss/_buttons.scss";
 @import  "~bootstrap/scss/_close.scss";
+@import  "~bootstrap/scss/_utilities.scss";
 // @import  "~bootstrap/scss/bootstrap";
+
+.modal-border {
+    border-color: rgba(161, 161, 161, 0.2);
+    border-radius: 2.5px;
+    color:rgb(68, 68, 68)
+}
+
+.modal-body {
+    min-height: 100px;
+}
+
+.modal-header {
+    align-items: center;
+}
+
+.close span {
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.btn {
+    border-radius: 0.2rem;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: black;
+    border-color: #c1c7cc;
+}
