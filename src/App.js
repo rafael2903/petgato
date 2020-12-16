@@ -45,7 +45,7 @@ function App() {
             {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>}
           </Route>
 
-          <Route path="/signup">
+          <Route path="/join">
             <SignUp />
           </Route>
 
