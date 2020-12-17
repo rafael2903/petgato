@@ -20,13 +20,10 @@ import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
 import Profile from './pages/Profile/index.js';
 import Contacts from './pages/backoffice/Contacts/index.js';
-<<<<<<< HEAD
 import Users from './pages/backoffice/Users/index.js';
 import EditUser from './pages/backoffice/EditUser/index.js';
-=======
 import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
->>>>>>> 273ae64f6ebb41456f8bd1f5f88d7cd4830ea933
 
 function App() {
   
