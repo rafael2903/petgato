@@ -6,6 +6,7 @@ import InputContainer from '../../components/InputContainer';
 import Input from '../../components/Input';
 import AuthButton from '../../components/AuthButton';
 import dog from '../../assets/contact.jpg';
+import TitlesContainer from '../../components/TitlesContainer';
 
 function Contact() {
 
@@ -48,10 +49,10 @@ function Contact() {
                     <img src={dog} alt=""/>
                 </figure>
                 <section >
-                    <div className='titles-container'>
+                    <TitlesContainer>
                         <h2>Fale conosco</h2>
                         <h1>Envie-nos uma mensagem de contato</h1>
-                    </div>
+                    </TitlesContainer>
 
                     <form onSubmit={handleSubmit}>
                         <InputContainer className='input-container'>

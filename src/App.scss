@@ -49,14 +49,19 @@
     border-collapse: collapse;
     max-width: 1500px;
     margin: 0 auto;
-}
-
-.table thead th {
-    border-width: 1px;
+    min-height: 300px;
 }
 
 .table th {
     text-align: left;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table thead th {
+    border-width: 1px;
 }
 
 .table a , .table button {

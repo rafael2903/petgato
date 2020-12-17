@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Main from '../../../components/Main';
-import { Link } from 'react-router-dom';
-import  '../../../App.scss' ;
+import TitlesContainer from '../../../components/TitlesContainer';
 import Table from 'react-bootstrap/Table';
+
+import  '../../../App.scss' ;
 
 function Contacts() {
 
@@ -30,6 +32,10 @@ function Contacts() {
 
     return (    
         <Main>
+            <TitlesContainer>
+                <h2>Backoffice</h2>
+                <h1>Mensagens de Contato</h1>
+            </TitlesContainer>
             <Table striped hover responsive>
                 <thead>
                     <tr>
