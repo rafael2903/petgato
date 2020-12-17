@@ -43,13 +43,10 @@ function EditUser( {token} ) {
         e.preventDefault();
         axios.put(`http://localhost:3000/users/${id}`, {name, is_admin: isAdmin}, config)
         .then(res => {
-            // if (res.status === 201) {
-            //     setSend(true);
-            //     setName('');
-            //     setEmail('');
-            //     setDescription('');
-            //     setTimeout(() => setSend(false), 2000);
-            // }
+            if (res.status === 200) {
+                setSend(true);
+                setTimeout(() => setSend(false), 2000);
+            }
         });
     }
 
