@@ -59,7 +59,7 @@ function Contact() {
                             <label htmlFor='description'>Mensagem</label>
                             <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={(e) => setDescription(e.target.value)} required/>
                         </InputContainer>
-                        <AuthButton type='submit' className='sendButton'>Enviar</AuthButton>
+                        <AuthButton hollow type='submit' className='sendButton'>ENVIAR</AuthButton>
                     </form>
                 </section>
             </Container>
