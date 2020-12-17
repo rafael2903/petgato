@@ -63,23 +63,24 @@ const TagPatch = ({type}) => {
                 <h2>Backoffice</h2>
                 <h1>{type === 'create' ? 'Criar' : 'Editar'} tag</h1>
             </TitlesContainer>
-
-            <form onSubmit={handleSubmit} >
+            <br />
+            <form onSubmit={handleSubmit} style={{maxWidth: '700px'}}>
 
                 <InputContainer>
                     <label htmlFor="name">Nome da tag</label>
                     <Input type='text' id="name" value={name} 
                     onChange={(e) => setName(e.target.value)} required />
                 </InputContainer>
-
+                <br /><br />
                 <InputContainer>
                     <label htmlFor="description">Descrição da tag</label>
                     <Input type='text' id="description" value={description} 
                     onChange={(e) => setDescription(e.target.value)} required />
                 </InputContainer>
 
-                <AuthButton type="submit">SALVAR</AuthButton>&nbsp;
-                <AuthButton onClick={() => setRedirect(true)}>VOLTAR</AuthButton>
+                <br /><br />
+                <AuthButton type="submit">SALVAR</AuthButton>&nbsp;&nbsp;
+                <AuthButton onClick={() => setRedirect(true)} hollow className="hollow">VOLTAR</AuthButton>
                 {redirect ? <Redirect to='/backoffice/tags' /> : null}
 
             </form>

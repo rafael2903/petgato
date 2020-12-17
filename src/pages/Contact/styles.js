@@ -94,7 +94,7 @@ export const Container = styled.div`
         grid-column-end: 2;
         grid-row-end: 4;
         height: 3.0rem;
-        width: 6.2rem;
+        width: 7.2rem;
         align-items: center;
         margin: 0 0 0 auto;
         position: relative;
