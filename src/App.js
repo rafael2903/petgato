@@ -20,6 +20,8 @@ import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
 import Profile from './pages/Profile/index.js';
 import Contacts from './pages/backoffice/Contacts/index.js';
+import Tags from './pages/backoffice/Tags/index.js';
+import TagPatch from './pages/backoffice/TagPatch/index.js';
 
 function App() {
   
@@ -78,6 +80,18 @@ function App() {
               </Route>
 
               <Route path="/backoffice/publications">
+              </Route>
+
+              <Route path="/backoffice/tags" exact>
+                <Tags />
+              </Route>
+
+              <Route path="/backoffice/tags/create">
+                  <TagPatch type='create'/>
+              </Route>
+
+              <Route path="/backoffice/tags/:id">
+                <TagPatch type='edit'/>
               </Route>
 
               <Route path="/backoffice/users">
