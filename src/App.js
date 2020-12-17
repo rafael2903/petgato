@@ -85,7 +85,7 @@ function App() {
               </Route>
 
               <Route path="/backoffice/users/:id">
-                  <EditUser />
+                  <EditUser token={token}/>
               </Route>
 
               <Route path="/backoffice/tags/create">

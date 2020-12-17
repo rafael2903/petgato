@@ -63,20 +63,6 @@ export const Container = styled.div`
         margin-bottom: 2rem;
     }
 
-    form::nth-child(1) {
-        grid-column-start: 1;
-        grid-row-start: 1;
-        grid-column-end: 1;
-        grid-row-end: 1;
-    }
-    
-    form::nth-child(2) {
-        grid-column-start: 2;
-        grid-row-start: 1;
-        grid-column-end: 2;
-        grid-row-end: 1;
-    }
-
     .text-container {
         grid-column-start: 1;
         grid-row-start: 2;
@@ -133,15 +119,6 @@ export const Container = styled.div`
             display: flex;
             align-items: center;
             flex-direction: column;
-        }
-
-        h1 {
-            font-size: 1.7rem;
-        }
-
-        h2 {
-            margin-bottom: 0.4rem;
-            font-size: 1.2rem;
         }
 
         & {

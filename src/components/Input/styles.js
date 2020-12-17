@@ -15,4 +15,8 @@ export const Input = styled.input`
         outline: none;
         border-width: 2px;
     }
+
+    :disabled {
+        background-color: #eee;
+    }
 `;

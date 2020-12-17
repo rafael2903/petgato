@@ -19,15 +19,7 @@ function Contact() {
     const data = {
         name, email, description
     }
-    const setFunctions = {
-        name: setName,
-        email: setEmail,
-        description: setDescription
-    }
-    function handleChange(e) {
-        const id = e.target.id;
-        setFunctions[id](e.target.value);
-    }
+
     function handleSubmit(e) {
         e.preventDefault();
         axios.post('http://localhost:3000/contacts', data)
@@ -57,15 +49,15 @@ function Contact() {
                     <form onSubmit={handleSubmit}>
                         <InputContainer className='input-container'>
                             <label htmlFor='name'>Nome</label>
-                            <Input type='text' id='name' value={name} onChange={handleChange} required/>
+                            <Input type='text' id='name' value={name} onChange={(e) => setName(e.target.value)} required/>
                         </InputContainer>
                         <InputContainer className='input-container'>
                             <label htmlFor='email'>Email</label>
-                            <Input type='email' id='email' value={email} onChange={handleChange} required/>
+                            <Input type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)} required/>
                         </InputContainer>
                         <InputContainer className='text-container'>
                             <label htmlFor='description'>Mensagem</label>
-                            <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={handleChange} required/>
+                            <textarea id='description' placeholder='Digite aqui a sua meow-sagem...' maxLength='1200' value={description} onChange={(e) => setDescription(e.target.value)} required/>
                         </InputContainer>
                         <AuthButton type='submit' className='sendButton'>Enviar</AuthButton>
                     </form>
