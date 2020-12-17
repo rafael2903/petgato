@@ -75,7 +75,7 @@ function SignUp() {
                         <label htmlFor="password_confirmation">Confirme sua senha</label>
                         <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength="8" required error={!match}/>
                         {passwordVisibility()}
-                        {match ? null : <InputMessage error >As senhas não conferem</InputMessage> }
+                        {match ? <InputMessage>Sua senha deve ter no mínimo 8 caracteres</InputMessage> : <InputMessage error >As senhas não conferem</InputMessage> }
                     </InputContainer>
 
                     <AuthButton type="submit">CADASTRAR</AuthButton>
