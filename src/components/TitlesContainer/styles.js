@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const TitlesContainer = styled.div`
 
     h2 {
         font-weight: 300;

@@ -1,11 +1,3 @@
-import { Container } from "./styles";
-
-function TitlesContainer( {children} ) {
-    return (
-        <Container>
-            {children}
-        </Container>
-    );
-}
+import { TitlesContainer } from "./styles";
 
 export default TitlesContainer;
