@@ -12,7 +12,7 @@ export const Container = styled.header`
 `;
 
 export const Icon = styled.img`
-    height: 60%;
+    height: 60px;
     margin: 0px 40px;
 `;
 

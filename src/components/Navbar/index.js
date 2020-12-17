@@ -3,19 +3,46 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container, Icon, Menu } from './styles';
 import logo from '../../assets/gatinho_petgato_branco.svg';
 
-const Navbar = ( {loggedIn, id} ) => {
+const Navbar = ( {loggedIn, id, admin} ) => {
 
     const location = useLocation();
 
     return(
         <Container>
-            <Icon src={logo}/>
+            <Link to='/' >
+                <Icon src={logo}/>
+            </Link>
             <Menu>
                 <li className={ location.pathname === '/' ? "active" : ""}>
                     <Link to='/' >
                         Página inicial
                     </Link>
                 </li>
+                { admin ? 
+                <>
+                <li className={ location.pathname === '/backoffice/publications' ? "active" : ""}>
+                    <Link to='/backoffice/publications'>
+                        Publicações
+                    </Link>
+                </li>
+                <li className={ location.pathname === '/backoffice/users' ? "active" : ""}>
+                <Link to='/backoffice/users'>
+                    Usuários
+                </Link>
+                </li>
+                <li className={ location.pathname === '/backoffice/denunciations' ? "active" : ""}>
+                <Link to='/backoffice/denunciations'>
+                    Denúncias
+                </Link>
+                </li>
+                <li className={ location.pathname === '/backoffice/contacts' ? "active" : ""}>
+                <Link to='/backoffice/contacts'>
+                    Mensagens
+                </Link>
+                </li>
+                </>
+                :
+                <>
                 <li className={ location.pathname === '/about' ? "active" : ""}>
                     <Link to='/about'>
                         Sobre Nós
@@ -32,6 +59,8 @@ const Navbar = ( {loggedIn, id} ) => {
                     <Link to='/login'>Entrar</Link>
                 }
                 </li>
+                </>
+                }
             </Menu>
         </Container>
     )

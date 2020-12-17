@@ -58,7 +58,7 @@ function App() {
           </Route>
 
           <Route path='/'>
-            <Navbar loggedIn={loggedIn} id={id} />
+            <Navbar loggedIn={loggedIn} id={id} admin={admin}/>
 
             <Switch>
               <Route exact path="/">
