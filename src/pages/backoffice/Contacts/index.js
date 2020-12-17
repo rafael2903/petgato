@@ -1,29 +1,61 @@
 import { useEffect, useState } from 'react';
-import Table from '../../../components/Table';
+// import Table from '../../../components/Table2';
 import axios from 'axios';
 import Main from '../../../components/Main';
-
+import { Link } from 'react-router-dom';
+import  '../../../App.scss' ;
+import Table from 'react-bootstrap/Table';
 
 function Contacts() {
 
-    const [content, setContent] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect( () => {
         axios.get("http://localhost:3000/contacts")
-        .then( res => {
-            setContent(res.data);
-        });
+        .then( res => setData(res.data) );
     },[])
 
-    return (
+    function handleDelete(id) {
+        axios.delete('http://localhost:3000/contacts/' + id)
+        .then( res => {
+            if (res.status === 204) {
+                window.alert('Mensagem excluída com sucesso.');
+                window.location.reload();
+            }
+        })
+    }
+
+    function formatDate(date) {
+        return date.split('T')[0].replaceAll('-','/').split('/').reverse().join('/');
+    }
+
+    return (    
         <Main>
-            <Table content={content} headers={ ['Remetente', 'Descrição', 'Data de Envio'] } 
-            attributes={ ['name', 'description', 'created_at']} show showRoute = 'contacts/' edit editRoute = 'users/edit/' destroy destroyUrl = 'http://localhost:3000/contacts/'/>
+            <Table striped hover responsive>
+                <thead>
+                    <tr>
+                        <th>Remetente</th>
+                        <th>Descrição</th>
+                        <th colSpan="3" >Data de Envio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map( row => {
+                        return (
+                            <tr>
+                                <td>{row.name}</td>
+                                <td>"{row.description.slice(0,45)}..."</td>
+                                <td className="date">{formatDate(row.created_at)}</td>
+                                <td><Link to={'contacts/' + row.id}>Exibir</Link></td>
+                                <td><button onClick={() => handleDelete(row.id)}>Excluir</button></td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </Table>
         </Main>
     );
 }
-
-
     
 export default Contacts;
 

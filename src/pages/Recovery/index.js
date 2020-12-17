@@ -55,7 +55,7 @@ function Recovery() {
                 
                 <StyledText>
                     Ainda não tem conta?&nbsp;
-                    <StyledLink to="/signup">Cadastre-se aqui</StyledLink>
+                    <StyledLink to="/join">Cadastre-se aqui</StyledLink>
                 </StyledText>
 
             </main>

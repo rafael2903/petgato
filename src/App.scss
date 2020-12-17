@@ -6,6 +6,8 @@
 @import  "~bootstrap/scss/_close.scss";
 @import  "~bootstrap/scss/_utilities.scss";
 @import  "~bootstrap/scss/_tables.scss";
+@import  "~bootstrap/scss/_root.scss";
+@import  "~bootstrap/scss/_alert.scss";
 // @import  "~bootstrap/scss/bootstrap";
 
 .modal-border {
@@ -41,4 +43,37 @@
     background-color: transparent;
     color: black;
     border-color: #c1c7cc;
+}
+
+.table thead th {
+    border-width: 1px;
+}
+
+.table th {
+    text-align: left;
+}
+.table {
+    border-collapse: collapse;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.table a , .table button {
+
+    background: none;
+    text-decoration: none;
+    color: #ba66a3;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+        // text-decoration: underline;
+        color: #c882b4;
+    }
+}
+
+.table .date {
+    width: 100px;
 }

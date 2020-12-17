@@ -2,12 +2,10 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Container } from './styles';
 import Main from '../../components/Main';
-import Footer from '../../components/Footer';
 import InputContainer from '../../components/InputContainer';
 import Input from '../../components/Input';
 import AuthButton from '../../components/AuthButton';
 import dog from '../../assets/contact.jpg';
-import Navbar from '../../components/Navbar';
 
 function Contact() {
 
