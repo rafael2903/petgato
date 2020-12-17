@@ -1,8 +1,6 @@
 function Publications() {
 
-    return (
-        
-        );
+    return <></>
     }
     
 export default Publications;

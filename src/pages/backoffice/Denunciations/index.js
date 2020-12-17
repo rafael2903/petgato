@@ -1,7 +1,7 @@
 function Denunciations() {
 
     return (
-        
+            <></>
         );
     }
     
