@@ -45,17 +45,18 @@
     border-color: #c1c7cc;
 }
 
+.table {
+    border-collapse: collapse;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
 .table thead th {
     border-width: 1px;
 }
 
 .table th {
     text-align: left;
-}
-.table {
-    border-collapse: collapse;
-    max-width: 1500px;
-    margin: 0 auto;
 }
 
 .table a , .table button {
@@ -69,11 +70,10 @@
     cursor: pointer;
 
     &:hover {
-        // text-decoration: underline;
         color: #c882b4;
     }
 }
 
 .table .date {
-    width: 100px;
+    min-width: 8.5rem;
 }
