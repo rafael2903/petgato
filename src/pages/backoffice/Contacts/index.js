@@ -27,7 +27,7 @@ function Contacts() {
     }
 
     function formatDate(date) {
-        return date.split('T')[0].replaceAll('-','/').split('/').reverse().join('/');
+        return date.split('T')[0].split('-').reverse().join('/');
     }
 
     return (    
