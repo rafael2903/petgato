@@ -18,6 +18,7 @@
 
 .modal-body {
     min-height: 100px;
+    word-wrap: break-word;
 }
 
 .modal-header {
@@ -50,6 +51,7 @@
     max-width: 1500px;
     margin: 0 auto;
     min-height: 300px;
+    margin-bottom: 4rem;
 }
 
 .table th {
@@ -79,6 +81,15 @@
     }
 }
 
-.table .date {
-    min-width: 8.5rem;
+.table .send-date {
+    min-width: 9rem;
+}
+
+
+.table .join-date {
+    min-width: 11rem;
+}
+
+.table tbody:last-child td{
+    border-bottom: 1px solid #dee2e6;
 }

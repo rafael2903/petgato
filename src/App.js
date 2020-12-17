@@ -20,6 +20,8 @@ import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
 import Profile from './pages/Profile/index.js';
 import Contacts from './pages/backoffice/Contacts/index.js';
+import Users from './pages/backoffice/Users/index.js';
+import EditUser from './pages/backoffice/EditUser/index.js';
 import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
 
@@ -52,11 +54,11 @@ function App() {
           </Route>
 
           <Route path="/join">
-            <SignUp />
+            {loggedIn ? <Redirect to="/" /> : <SignUp />}
           </Route>
 
           <Route path="/recovery">
-            <Recovery />
+            {loggedIn ? <Redirect to="/" /> : <Recovery />}
           </Route>
 
           <Route path='/'>
@@ -82,8 +84,8 @@ function App() {
               <Route path="/backoffice/publications">
               </Route>
 
-              <Route path="/backoffice/tags" exact>
-                <Tags />
+              <Route path="/backoffice/users/:id">
+                  <EditUser />
               </Route>
 
               <Route path="/backoffice/tags/create">
@@ -94,17 +96,20 @@ function App() {
                 <TagPatch type='edit'/>
               </Route>
 
+              <Route path="/backoffice/tags" exact>
+                <Tags />
+              </Route>
+
               <Route path="/backoffice/users">
+                <Users token={token} />
               </Route>
 
               <Route path="/backoffice/denunciations">
-
                 <Switch>
                     <Route path="/backoffice/denunciations/:id">
                       <DenunciationModal/>
                     </Route>
                 </Switch>
-                
               </Route>
 
               <Route path="/backoffice/contacts">
@@ -114,8 +119,8 @@ function App() {
                         <ContactModal/>
                     </Route>
                 </Switch>
-
               </Route>
+
             </Switch>
 
             <Footer />

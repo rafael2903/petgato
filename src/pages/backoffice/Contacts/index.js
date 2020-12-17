@@ -5,8 +5,6 @@ import Main from '../../../components/Main';
 import TitlesContainer from '../../../components/TitlesContainer';
 import Table from 'react-bootstrap/Table';
 
-import  '../../../App.scss' ;
-
 function Contacts() {
 
     const [data, setData] = useState([]);
@@ -36,7 +34,7 @@ function Contacts() {
                 <h2>Backoffice</h2>
                 <h1>Mensagens de Contato</h1>
             </TitlesContainer>
-            <Table striped hover responsive>
+            <Table striped responsive>
                 <thead>
                     <tr>
                         <th>Remetente</th>
@@ -50,7 +48,7 @@ function Contacts() {
                             <tr>
                                 <td>{row.name}</td>
                                 <td>"{ row.description.slice(0,45) }..."</td>
-                                <td className="date">{ formatDate(row.created_at) }</td>
+                                <td className="send-date">{ formatDate(row.created_at) }</td>
                                 <td><Link to={'contacts/' + row.id}>Exibir</Link></td>
                                 <td><button onClick={ () => handleDelete(row.id) }>Excluir</button></td>
                             </tr>
