@@ -60,6 +60,7 @@ export const Container = styled.div`
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: 4rem 1fr 1fr auto;
         gap: 20px;
+        margin-bottom: 2rem;
     }
 
     form::nth-child(1) {

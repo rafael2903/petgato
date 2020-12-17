@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const TitlesContainer = styled.div`
 
+    margin-top: 3rem;
+
     h2 {
         font-weight: 300;
         text-transform: uppercase;
