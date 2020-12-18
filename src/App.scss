@@ -10,6 +10,11 @@
 @import  "~bootstrap/scss/_alert.scss";
 // @import  "~bootstrap/scss/bootstrap";
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .modal-border {
     border-color: rgba(161, 161, 161, 0.2);
     border-radius: 2.5px;
@@ -50,7 +55,7 @@
     border-collapse: collapse;
     margin: 0 auto;
     min-height: 300px;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .table th {
@@ -63,6 +68,10 @@
 
 .table thead th {
     border-width: 1px;
+}
+
+.table tbody:last-child td{
+    border-bottom: 1px solid #dee2e6;
 }
 
 .table a , .table button {
@@ -80,15 +89,23 @@
     }
 }
 
-.table .send-date {
+.table .date {
     min-width: 9rem;
 }
 
+.table .number {
+    min-width: 4.5rem;
+    text-align: center;
+}
+
+.table .title {
+    color: #ba66a3;
+    font-weight: 600;
+    min-width: 23rem;
+}
 
 .table .join-date {
     min-width: 11rem;
 }
 
-.table tbody:last-child td{
-    border-bottom: 1px solid #dee2e6;
-}
+

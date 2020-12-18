@@ -48,7 +48,7 @@ function Contacts() {
                             <tr>
                                 <td>{row.name}</td>
                                 <td>"{ row.description.slice(0,45) }..."</td>
-                                <td className="send-date">{ formatDate(row.created_at) }</td>
+                                <td className="date">{ formatDate(row.created_at) }</td>
                                 <td><Link to={'contacts/' + row.id}>Exibir</Link></td>
                                 <td><button onClick={ () => handleDelete(row.id) }>Excluir</button></td>
                             </tr>

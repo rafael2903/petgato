@@ -25,6 +25,7 @@ import EditUser from './pages/backoffice/EditUser/index.js';
 import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
 import PostEdit from './pages/backoffice/PostEdit/index.js';
+import Publications from './pages/backoffice/Publications/index.js';
 
 function App() {
   
@@ -83,6 +84,7 @@ function App() {
               </Route>
 
               <Route path="/backoffice/publications" exact>
+                <Publications />
               </Route>
 
               <Route path="/backoffice/publications/create">
@@ -105,6 +107,10 @@ function App() {
                 <Tags />
               </Route>
 
+              <Route path="/backoffice/users/:id">
+                  <EditUser token={token}/>
+              </Route>
+
               <Route path="/backoffice/users">
                 <Users token={token} />
               </Route>
@@ -124,6 +130,9 @@ function App() {
                         <ContactModal/>
                     </Route>
                 </Switch>
+              </Route>
+
+              <Route path="/backoffice/:id">
               </Route>
 
             </Switch>
