@@ -42,4 +42,8 @@ export const Menu = styled.ul`
     .active{
         font-weight: 500;
     }
+
+    button {
+        color: white;
+    }
 `;

@@ -13,9 +13,11 @@ import {modules, formats} from '../../../components/TextEditor';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const PostEdit = ({type}) => {
+const PostEdit = () => {
 
     const location = useLocation();
+    console.log(location);
+    const type = location.pathname.split("/")[3];
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
@@ -76,7 +78,7 @@ const PostEdit = ({type}) => {
         <Main>
             <TitlesContainer>
                 <h2>Backoffice</h2>
-                <h1>{type === 'create' ? 'Criar' : 'Editar'} publicação</h1>
+                <h1>{type === 'create' ? 'Criar' : 'Editar'} Publicação</h1>
             </TitlesContainer>
 
             <br />
@@ -90,7 +92,7 @@ const PostEdit = ({type}) => {
                 <InputContainer>
                     <ReactQuill theme="snow" modules={modules} formats={formats} 
                     value={text} onChange={(e) => setText(e.valueOf())} required
-                    style={{height:'200px', borderBlockColor:'red'}}/>
+                    style={{height:'500px', borderBlockColor:'red'}}/>
                 </InputContainer>
 
                 <br /><br />
@@ -103,14 +105,14 @@ const PostEdit = ({type}) => {
                 <br /><br />
                 <InputContainer>
                     <label htmlFor="tags">Escolha pelo menos uma tag:</label>
-                <TagsContainer>
-                    {tags.map( tag => 
-                        <>
-                        <input type='checkbox' name={'tag:'+tag.name} title={tag.name}/>
-                        &nbsp;{tag.name}&nbsp;&nbsp;&nbsp;
-                        </>
-                    )}
-                </TagsContainer>
+                    <TagsContainer>
+                        {tags.map( tag => 
+                            <>
+                            <input type='checkbox' name={'tag:'+tag.name} title={tag.name}/>
+                            &nbsp;{tag.name}&nbsp;&nbsp;&nbsp;
+                            </>
+                        )}
+                    </TagsContainer>
                 </InputContainer>
 
             <Link to='/backoffice/tags'>

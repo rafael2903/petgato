@@ -57,14 +57,14 @@ function Publications() {
                                 <td className="date">{ formatDate(row.created_at) }</td>
                                 <td className='title'>{ row.name.slice(0,40) }...</td>
                                 <td>{ formatTags(row.tags) }...</td>
-                                <td><Link to={'publications/' + row.id}>Exibir</Link></td>
+                                <td><Link to={'publications/edit/' + row.id}>Exibir</Link></td>
                                 <td><button onClick={ () => handleDelete(row.id) }>Excluir</button></td>
                             </tr>
                         );
                     })}
                 </tbody>
             </Table>
-            <AuthButton hollow style={{marginBottom: '3rem'}}><Link to=''>nova publicação</Link></AuthButton>
+            <AuthButton hollow style={{marginBottom: '3rem'}}><Link to='publications/create'>nova publicação</Link></AuthButton>
         </Main>
     );
 }

@@ -64,7 +64,7 @@ function App() {
           </Route>
 
           <Route path='/'>
-            <Navbar loggedIn={loggedIn} id={id} admin={admin}/>
+            <Navbar loggedIn={loggedIn} admin={admin} setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin} />
 
             <Switch>
               <Route exact path="/">
@@ -88,6 +88,10 @@ function App() {
               </Route>
 
               <Route path="/backoffice/publications/create">
+                <PostEdit />
+              </Route>
+
+              <Route path="/backoffice/publications/edit/:id">
                 <PostEdit />
               </Route>
 

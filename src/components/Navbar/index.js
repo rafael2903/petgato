@@ -2,9 +2,24 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container, Icon, Menu } from './styles';
 import logo from '../../assets/gatinho_petgato_branco.svg';
 
-const Navbar = ( {loggedIn, id, admin} ) => {
+const Navbar = ( {loggedIn, admin, setloggedIn, setId, setToken, setAdmin } ) => {
 
     const location = useLocation();
+
+    function logout() {
+
+        setloggedIn(false)
+        localStorage.removeItem('loggedIn');
+
+        setId('');
+        localStorage.removeItem('id');
+        
+        setToken('');
+        localStorage.removeItem('token');
+
+        setAdmin(false);
+        localStorage.removeItem('admin');
+    }
 
     return(
         <Container>
@@ -52,11 +67,11 @@ const Navbar = ( {loggedIn, id, admin} ) => {
                             Fale Conosco
                         </Link>
                     </li>
-                    <li>
-                        {loggedIn ? <Link to='/profile'>Minha Conta</Link> : <Link to='/login'>Entrar</Link>}
-                    </li>
                 </>
                 }
+                    <li>
+                        {loggedIn ? <Link to='' onClick={logout}>Sair</Link> : <Link to='/login'>Entrar</Link>}
+                    </li>
             </Menu>
         </Container>
     )
