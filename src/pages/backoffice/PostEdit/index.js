@@ -13,11 +13,9 @@ import {modules, formats} from '../../../components/TextEditor';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const PostEdit = () => {
+const PostEdit = ({type}) => {
 
     const location = useLocation();
-    console.log(location);
-    const type = location.pathname.split("/")[3];
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');

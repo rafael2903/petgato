@@ -26,6 +26,7 @@ import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
 import PostEdit from './pages/backoffice/PostEdit/index.js';
 import Publications from './pages/backoffice/Publications/index.js';
+import Building from './components/Building/index.js';
 
 function App() {
   
@@ -68,7 +69,8 @@ function App() {
 
             <Switch>
               <Route exact path="/">
-                <Home />
+                {/* <Home /> */}
+                <Building />
               </Route>
 
               <Route path="/contact">
@@ -92,7 +94,8 @@ function App() {
               </Route>
 
               <Route path="/backoffice/publications/edit/:id">
-                <PostEdit />
+                {/* <PostEdit /> */}
+                <Building />
               </Route>
 
               <Route path="/backoffice/users/:id">
@@ -120,6 +123,7 @@ function App() {
               </Route>
 
               <Route path="/backoffice/denunciations">
+                <Building />
                 <Switch>
                     <Route path="/backoffice/denunciations/:id">
                       <DenunciationModal/>
