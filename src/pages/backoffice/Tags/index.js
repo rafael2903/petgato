@@ -14,8 +14,11 @@ const Tags = () => {
     const [data, setData] = useState([]);
 
     useEffect( () => {
-        axios.get("http://localhost:3000/tags")
-        .then( res => setData(res.data) );
+        axios.get("http://localhost:3000/tags", { headers: { Accept: '*/*'} })
+        .then( res => setData(res.data) )
+        .catch( err => {
+            console.log(err)
+        })
     },[])
 
     function handleDelete(id) {

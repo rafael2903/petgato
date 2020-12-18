@@ -24,6 +24,7 @@ import Users from './pages/backoffice/Users/index.js';
 import EditUser from './pages/backoffice/EditUser/index.js';
 import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
+import PostEdit from './pages/backoffice/PostEdit/index.js';
 
 function App() {
   
@@ -81,11 +82,15 @@ function App() {
                 <Profile />
               </Route>
 
-              <Route path="/backoffice/publications">
+              <Route path="/backoffice/publications" exact>
+              </Route>
+
+              <Route path="/backoffice/publications/create">
+                <PostEdit />
               </Route>
 
               <Route path="/backoffice/users/:id">
-                  <EditUser token={token}/>
+                <EditUser token={token}/>
               </Route>
 
               <Route path="/backoffice/tags/create">
