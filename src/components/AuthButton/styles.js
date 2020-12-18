@@ -9,27 +9,18 @@ export const AuthButton = styled.button`
     cursor: pointer;
     margin-top: 0.5rem;
     margin-bottom: 0.7rem;
+    text-transform: uppercase;
 
-    background-color: #BA66A3;
-    color: #FFFFFF;
-    border: none;
+    background-color: ${props => props.hollow ? '#fff' : '#ba66a3' };
+    color: ${props => props.hollow ? '#444143' : '#fff' };;
+    border: ${props => props.hollow ? '1px solid #BA66A3' : 'none' };
 
     :hover{
-        background-color: #c882b5;
+        background-color: ${props => props.hollow ? '#f7f7f7' : '#c882b5' };
     }
 
     :focus {
         outline: none;
     }
 
-    ${props => props.hollow ? `
-        background-color: #FFFFFF;
-        color: #444143;
-        border: 1px solid #BA66A3;
-        
-        :hover{
-        background-color: #F7F7F7;
-        }
-        
-        ` : '' };
 `;

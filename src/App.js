@@ -24,6 +24,7 @@ import Users from './pages/backoffice/Users/index.js';
 import EditUser from './pages/backoffice/EditUser/index.js';
 import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
+import Publications from './pages/backoffice/Publications/index.js';
 
 function App() {
   
@@ -81,11 +82,11 @@ function App() {
                 <Profile />
               </Route>
 
-              <Route path="/backoffice/publications">
+              <Route path="/backoffice/create">
               </Route>
 
-              <Route path="/backoffice/users/:id">
-                  <EditUser token={token}/>
+              <Route path="/backoffice/publications">
+                <Publications />
               </Route>
 
               <Route path="/backoffice/tags/create">
@@ -98,6 +99,10 @@ function App() {
 
               <Route path="/backoffice/tags" exact>
                 <Tags />
+              </Route>
+
+              <Route path="/backoffice/users/:id">
+                  <EditUser token={token}/>
               </Route>
 
               <Route path="/backoffice/users">
@@ -119,6 +124,9 @@ function App() {
                         <ContactModal/>
                     </Route>
                 </Switch>
+              </Route>
+
+              <Route path="/backoffice/:id">
               </Route>
 
             </Switch>

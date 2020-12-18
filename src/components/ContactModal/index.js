@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { useHistory, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';

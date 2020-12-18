@@ -84,7 +84,7 @@ function EditUser( {token} ) {
                         </InputContainer>
 
                         <div className='buttons'>
-                            <AuthButton className='backButton' onClick={() => history.goBack()}>Voltar</AuthButton>
+                            <AuthButton className='backButton' hollow onClick={() => history.goBack()}>Voltar</AuthButton>
                             <AuthButton type='submit' className='sendButton'>Salvar</AuthButton>
                         </div>
                     </form>

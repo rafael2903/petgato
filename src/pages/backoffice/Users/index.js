@@ -54,7 +54,7 @@ function Users( {token} ) {
                                 <td>{row.name}</td>
                                 <td>{ row.is_admin ? 'Administrador' : 'Usuário' }</td>
                                 <td className="join-date">{ formatDate(row.created_at) }</td>
-                                <td><Link to={'users/' + row.id}>Editar</Link></td>
+                                <td><Link to={'/backoffice/users/'+ row.id}>Editar</Link></td>
                                 <td><button onClick={ () => handleDelete(row.id) }>Excluir</button></td>
                             </tr>
                         );
