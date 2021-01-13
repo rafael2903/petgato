@@ -1,77 +1,73 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container, Icon, Menu } from './styles';
 import logo from '../../assets/gatinho_petgato_branco.svg';
+import AccountMenu from '../AccountMenu';
 
 const Navbar = ( {loggedIn, admin, setloggedIn, setId, setToken, setAdmin } ) => {
 
     const location = useLocation();
-
-    function logout() {
-
-        setloggedIn(false)
-        localStorage.removeItem('loggedIn');
-
-        setId('');
-        localStorage.removeItem('id');
-        
-        setToken('');
-        localStorage.removeItem('token');
-
-        setAdmin(false);
-        localStorage.removeItem('admin');
-    }
+    const pathname = location.pathname;
+    const onBackoffice = pathname.includes('backoffice');
+    const [showMenu, setShowMenu] = useState(false);
 
     return(
-        <Container>
+        <Container showMenu={showMenu}>
             <Link to='/' >
                 <Icon src={logo}/>
             </Link>
+
+            <div className='menu-icon' onClick={ () => setShowMenu(prev => !prev) }>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span className='sr-only'>Menu de navegação</span>
+            </div>
+            
             <Menu>
-                <li className={ location.pathname === '/' ? "active" : ""}>
+                <li className={ pathname === '/' && "active"}>
                     <Link to='/' >
                         Página inicial
                     </Link>
                 </li>
-                { admin ? 
+                { admin && onBackoffice ? 
                 <>
-                    <li className={ location.pathname === '/backoffice/publications' ? "active" : ""}>
+                    <li className={ pathname === '/backoffice/publications' && "active"}>
                         <Link to='/backoffice/publications'>
                             Publicações
                         </Link>
                     </li>
-                    <li className={ location.pathname === '/backoffice/users' ? "active" : ""}>
-                    <Link to='/backoffice/users'>
-                        Usuários
-                    </Link>
+                    <li className={ pathname === '/backoffice/users' && "active"}>
+                        <Link to='/backoffice/users'>
+                            Usuários
+                        </Link>
                     </li>
-                    <li className={ location.pathname === '/backoffice/denunciations' ? "active" : ""}>
-                    <Link to='/backoffice/denunciations'>
-                        Denúncias
-                    </Link>
+                    <li className={ pathname === '/backoffice/denunciations' && "active"}>
+                        <Link to='/backoffice/denunciations'>
+                            Denúncias
+                        </Link>
                     </li>
-                    <li className={ location.pathname === '/backoffice/contacts' ? "active" : ""}>
-                    <Link to='/backoffice/contacts'>
-                        Mensagens
-                    </Link>
+                    <li className={ pathname === '/backoffice/contacts' && "active"}>
+                        <Link to='/backoffice/contacts'>
+                            Mensagens
+                        </Link>
                     </li>
                 </>
                 :
                 <>
-                    <li className={ location.pathname === '/about' ? "active" : ""}>
+                    <li className={ pathname === '/about' && "active"}>
                         <Link to='/about'>
                             Sobre Nós
                         </Link>
                     </li>
-                    <li className={ location.pathname === '/contact' ? "active" : ""}>
+                    <li className={ pathname === '/contact' && "active"}>
                         <Link to='/contact'>
                             Fale Conosco
                         </Link>
                     </li>
+                    <AccountMenu loggedIn={loggedIn} setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>
                 </>
                 }
-                    <li>
-                        {loggedIn ? <Link to='' onClick={logout}>Sair</Link> : <Link to='/login'>Entrar</Link>}
-                    </li>
             </Menu>
         </Container>
     )
