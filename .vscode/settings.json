@@ -1,4 +1,8 @@
-// {
+{
+    "emmet.excludeLanguages": [
+        "markdown"
+    ]
+} // {
 //   "workbench.colorCustomizations": {
 //     "titleBar.activeForeground": "#111111",
 //     "titleBar.inactiveForeground": "#111111",

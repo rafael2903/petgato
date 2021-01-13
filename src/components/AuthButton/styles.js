@@ -10,7 +10,7 @@ export const AuthButton = styled.button`
     margin-top: 0.5rem;
     margin-bottom: 0.7rem;
     text-transform: uppercase;
-
+    
     background-color: ${props => props.hollow ? '#fff' : '#ba66a3' };
     color: ${props => props.hollow ? '#444143' : '#fff' };;
     border: ${props => props.hollow ? '1px solid #BA66A3' : 'none' };

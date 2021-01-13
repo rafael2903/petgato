@@ -35,7 +35,7 @@ function Contact() {
     }
 
     return (
-        <Main>
+        <Main centered>
             <Container send={send}>
                 <figure className='image-container'>
                     <img src={dog} alt=""/>

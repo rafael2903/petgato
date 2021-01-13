@@ -5,4 +5,6 @@ export const Main = styled.main`
     max-width: 1500px;
     margin: 0 auto;
     position: relative;
+
+    flex-grow: ${ props => props.centered ? 0 : 1};
 `;

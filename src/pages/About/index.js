@@ -12,7 +12,7 @@ import { ImagesContainer, TextContainer, Wrapper } from './styles';
 const About = () => {
 
     return(
-        <Main>
+        <Main centered>
             <Wrapper>
                 <ImagesContainer>
                     <figure>

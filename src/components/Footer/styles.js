@@ -16,6 +16,7 @@ export const FooterContainer = styled.footer`
 
     a {
         color: white;
+        text-decoration: underline;
     }
 
     @media (max-width: 600px) {

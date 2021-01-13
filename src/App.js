@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
+	BrowserRouter as Router,
+	Route,
+	Redirect,
+	Switch,
 } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyles.js';
 import Contact from './pages/Contact';
@@ -14,7 +14,7 @@ import Home from './pages/Home/index.js';
 import DenunciationModal from './components/DenunciationModal/index.js';
 import ContactModal from './components/ContactModal/index.js';
 
-import  './App.scss' ;
+import './App.scss';
 import Navbar from './components/Navbar/index.js';
 import About from './pages/About/index.js';
 import Footer from './components/Footer/index.js';
@@ -29,129 +29,140 @@ import Publications from './pages/backoffice/Publications/index.js';
 import Building from './components/Building/index.js';
 
 function App() {
-  
-  const [loggedIn, setloggedIn] = useState(() => {
-    return JSON.parse(localStorage.getItem('loggedIn'));
-  });
+	const [loggedIn, setloggedIn] = useState(() => {
+		return JSON.parse(localStorage.getItem('loggedIn'));
+	});
 
-  const [id, setId] = useState(() => {
-    return localStorage.getItem('id');
-  });
-  
-  const [token, setToken] = useState(() => {
-    return localStorage.getItem('token');
-  });
-  const [admin, setAdmin] = useState(() => {
-    return localStorage.getItem('admin');
-  });
+	const [id, setId] = useState(() => {
+		return localStorage.getItem('id');
+	});
 
-  return (
-    <div className="App">
-      <GlobalStyle />
+	const [token, setToken] = useState(() => {
+		return localStorage.getItem('token');
+	});
+	const [admin, setAdmin] = useState(() => {
+		return localStorage.getItem('admin');
+	});
 
-      <Router>
-        <Switch>
+	return (
+		<div className='App'>
+			<GlobalStyle />
 
-          <Route path="/login">
-            {loggedIn ? <Redirect to="/" /> : <Login setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin}/>}
-          </Route>
+			<Router>
+				<Switch>
+					<Route path='/login'>
+						{loggedIn ? (
+							<Redirect to='/' />
+						) : (
+							<Login
+								setloggedIn={setloggedIn}
+								setId={setId}
+								setToken={setToken}
+								setAdmin={setAdmin}
+							/>
+						)}
+					</Route>
 
-          <Route path="/join">
-            {loggedIn ? <Redirect to="/" /> : <SignUp />}
-          </Route>
+					<Route path='/join'>
+						{loggedIn ? <Redirect to='/' /> : <SignUp />}
+					</Route>
 
-          <Route path="/recovery">
-            {loggedIn ? <Redirect to="/" /> : <Recovery />}
-          </Route>
+					<Route path='/recovery'>
+						{loggedIn ? <Redirect to='/' /> : <Recovery />}
+					</Route>
 
-          <Route path='/'>
-            <Navbar loggedIn={loggedIn} admin={admin} setloggedIn={setloggedIn} setId={setId} setToken={setToken} setAdmin={setAdmin} />
+					<Route path='/'>
+						<Navbar
+							loggedIn={loggedIn}
+							admin={admin}
+							setloggedIn={setloggedIn}
+							setId={setId}
+							setToken={setToken}
+							setAdmin={setAdmin}
+						/>
 
-            <Switch>
-              <Route exact path="/">
-                {/* <Home /> */}
-                <Building />
-              </Route>
+						<Switch>
+							<Route exact path='/'>
+								{/* <Home /> */}
+								<Building />
+							</Route>
 
-              <Route path="/contact">
-                <Contact />
-              </Route>
+							<Route path='/contact'>
+								<Contact />
+							</Route>
 
-              <Route path="/about">
-                <About />
-              </Route>
+							<Route path='/about'>
+								<About />
+							</Route>
 
-              <Route path="/user/:id">
-                <Profile />
-              </Route>
+							<Route path='/user/:id'>
+								<Profile />
+							</Route>
 
-              <Route path="/backoffice/publications" exact>
-                <Publications />
-              </Route>
+							<Route path='/backoffice/publications' exact>
+								<Publications />
+							</Route>
 
-              <Route path="/backoffice/publications/create">
-                <PostEdit />
-              </Route>
+							<Route path='/backoffice/publications/create'>
+								<PostEdit />
+							</Route>
 
-              <Route path="/backoffice/publications/edit/:id">
-                {/* <PostEdit /> */}
-                <Building />
-              </Route>
+							<Route path='/backoffice/publications/edit/:id'>
+								{/* <PostEdit /> */}
+								<Building />
+							</Route>
 
-              <Route path="/backoffice/users/:id">
-                <EditUser token={token}/>
-              </Route>
+							<Route path='/backoffice/users/:id'>
+								<EditUser token={token} />
+							</Route>
 
-              <Route path="/backoffice/tags/create">
-                  <TagPatch type='create'/>
-              </Route>
+							<Route path='/backoffice/tags/create'>
+								<TagPatch type='create' />
+							</Route>
 
-              <Route path="/backoffice/tags/:id">
-                <TagPatch type='edit'/>
-              </Route>
+							<Route path='/backoffice/tags/:id'>
+								<TagPatch type='edit' />
+							</Route>
 
-              <Route path="/backoffice/tags" exact>
-                <Tags />
-              </Route>
+							<Route path='/backoffice/tags' exact>
+								<Tags />
+							</Route>
 
-              <Route path="/backoffice/users/:id">
-                  <EditUser token={token}/>
-              </Route>
+							<Route path='/backoffice/users/:id'>
+								<EditUser token={token} />
+							</Route>
 
-              <Route path="/backoffice/users">
-                <Users token={token} />
-              </Route>
+							<Route path='/backoffice/users'>
+								<Users token={token} />
+							</Route>
 
-              <Route path="/backoffice/denunciations">
-                <Building />
-                <Switch>
-                    <Route path="/backoffice/denunciations/:id">
-                      <DenunciationModal/>
-                    </Route>
-                </Switch>
-              </Route>
+							<Route path='/backoffice/denunciations'>
+								<Building />
+								<Switch>
+									<Route path='/backoffice/denunciations/:id'>
+										<DenunciationModal />
+									</Route>
+								</Switch>
+							</Route>
 
-              <Route path="/backoffice/contacts">
-                <Contacts />
-                <Switch>
-                    <Route path="/backoffice/contacts/:id">
-                        <ContactModal/>
-                    </Route>
-                </Switch>
-              </Route>
+							<Route path='/backoffice/contacts'>
+								<Contacts />
+								<Switch>
+									<Route path='/backoffice/contacts/:id'>
+										<ContactModal />
+									</Route>
+								</Switch>
+							</Route>
 
-              <Route path="/backoffice/:id">
-              </Route>
+							<Route path='/backoffice/:id'></Route>
+						</Switch>
 
-            </Switch>
-
-            <Footer />
-          </Route>
-
-        </Switch>
-      </Router>
-    </div>
-  );
+						<Footer />
+					</Route>
+				</Switch>
+			</Router>
+		</div>
+	);
 }
 
 export default App;
