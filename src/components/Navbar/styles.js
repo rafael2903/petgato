@@ -9,6 +9,8 @@ export const Container = styled.header`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 8;
     
     .menu-icon .sr-only {
         position: absolute;
@@ -22,11 +24,10 @@ export const Container = styled.header`
     }
     
     @media (max-width: 1165px) {
-    
-        
+            
         .menu-icon {
-            height: 22px;
-            width: 30px; 
+            height: 1.4rem;
+            width: 2rem; 
             display: flex;
             align-items: center;
             justify-items: center;
@@ -34,7 +35,8 @@ export const Container = styled.header`
             align-content: center;
             z-index: 9;
             position: relative;
-            margin-right: 15px;
+            margin-right: 1.2rem;
+            cursor: pointer;
         }
 
         .menu-icon span {
@@ -48,15 +50,18 @@ export const Container = styled.header`
         }
 
         span:nth-child(1){
-            top: 0;
+            top: ${ props => props.showMenu ? '8px' : '0px' };
+            transform: ${ props => props.showMenu && 'rotate(-45deg)' };
         }
       
         span:nth-child(2){
             top: 8px;
+            opacity: ${ props => props.showMenu && '0' };
         }
         
         span:nth-child(3){
-            top: 16px;
+            top: ${ props => props.showMenu ? '8px' : '16px' };
+            transform: ${ props => props.showMenu && 'rotate(45deg)' };
         }
     }
 `;
@@ -73,23 +78,25 @@ export const Menu = styled.ul`
     color: #FFFFFF;
     margin-right: 50px;
 
-    li{
+    li {
         font-size: 1.4rem;
         margin: 0px 20px;
         list-style: none;
         font-weight: 300;
+        display: block;
     }
 
-    a{
+    a {
         text-decoration: none;
-        color: #FFFFFF;
+        color: white;
+        display: block;
     }
 
-    a:hover{
+    a:hover, button:hover, summary:hover {
         opacity: 0.85;
     }
 
-    .active{
+    .active {
         font-weight: 500;
     }
 
@@ -98,7 +105,28 @@ export const Menu = styled.ul`
     }
 
     @media (max-width: 1165px) {
-        display: ${ props => props.showMenu ? 'flex' : 'none'};
+        display:  ${ props => props.showMenu || 'none' };
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        background-color: #BA66A3;
+        z-index: 5;
+        transition: height 0.25s ease-in-out;
+
+        li {
+            width: 100%;
+            margin: 0;
+        }
+
+        a, button, summary {
+            display: block;
+            margin: 0;
+            width: 100%;
+            padding: 1rem 0;
+            border-top: solid 1px lightgray;
+            text-align: center;
+        }
     }
 
 `;

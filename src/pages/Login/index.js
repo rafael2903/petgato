@@ -41,12 +41,6 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
     .catch( () => setError(true) );
   }
 
-  function passwordVisibility() {
-    if (visible) 
-        return <BsEyeSlashFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
-    else 
-        return <BsEyeFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
-  }
 
   return (
     <Divider src={BackgroundImage}>
@@ -63,8 +57,13 @@ function Login( {setloggedIn, setId, setToken, setAdmin}) {
           <InputContainer>
             <label htmlFor="password">Senha</label>
             <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="8" required />
+
             {error ? <InputMessage error >Email ou senha inválidos</InputMessage> : null}
-            {passwordVisibility()}
+
+            <button type='button' className='eye' style={{height: '20px', width: '20px'}} onClick={() => setVisible( prev => !prev)}>
+              {visible ? <BsEyeSlashFill  size='20px' /> : <BsEyeFill size='20px'/>}
+            </button>
+
           </InputContainer>
 
           <AuthButton type="submit">ENTRAR</AuthButton>

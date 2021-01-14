@@ -1,21 +1,25 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.li`
+export const Details = styled.details`
     cursor: pointer;
     position: relative;
 
-    ul {
+    & > summary {
+        list-style: none;
+    }
+
+    & > summary::-webkit-details-marker {
         display: none;
+    }
+
+    ul {
         position: absolute;
         background-color: white;
         border-radius: 5px;
         border: solid 1px lightgray;
-        right: 0; 
-        z-index: 10
-    }
-
-    &:hover ul, &:active ul {
-        display: block;
+        top: 110%;
+        right: -2px; 
+        z-index: 10;
     }
 
     ul li {
@@ -23,13 +27,36 @@ export const Wrapper = styled.li`
         font-weight: 500;
     }
     
-    ul li span:hover {
-        opacity: 0.85;
-    }
-    
-    ul li a{
+    ul li a, ul li button{
         display: block;
         padding: 6px 0;
         color: #BA66A3;
     }
+
+    @media (max-width: 1165px) {
+        position: static;
+
+        & > summary {
+            list-style: unset;
+        }
+        
+        & > summary::-webkit-details-marker {
+            display: unset;
+        }
+        
+        ul {
+            position: static;
+            background-color: #BA66A3;
+            border: unset;
+        }
+        
+        ul li a, ul li button {
+            font-size: 1.2rem;
+            font-weight: 300;
+            padding: 1rem 0;
+            color: white;
+        }
+
+    }
+
 `;

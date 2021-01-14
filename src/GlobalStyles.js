@@ -18,4 +18,18 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: space-between;
     }
+
+    button {
+        color: black;
+        cursor: pointer;
+        background-color: unset;
+        font: unset;
+        padding: 0;
+        border: none;
+    }
+
+    a:focus, button:focus, summary:focus {
+        outline: lightgray auto 1px;
+    }
+    
 `;

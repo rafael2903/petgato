@@ -17,14 +17,14 @@ const Navbar = ( {loggedIn, admin, setloggedIn, setId, setToken, setAdmin } ) =>
                 <Icon src={logo}/>
             </Link>
 
-            <div className='menu-icon' onClick={ () => setShowMenu(prev => !prev) }>
+            <button className='menu-icon' onClick={ () => setShowMenu(prev => !prev) }>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span className='sr-only'>Menu de navegação</span>
-            </div>
+            </button>
             
-            <Menu>
+            <Menu showMenu={showMenu}>
                 <li className={ pathname === '/' && "active"}>
                     <Link to='/' >
                         Página inicial

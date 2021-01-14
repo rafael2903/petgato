@@ -40,13 +40,6 @@ function SignUp() {
         }
     }
 
-    function passwordVisibility() {
-        if (visible) 
-            return <BsEyeSlashFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
-        else 
-            return <BsEyeFill className='eye' size='20px' onClick={() => setVisible( prev => !prev)}/>;
-    }
-
     return (
         <Divider src={BackgroundImage}>
             <main>
@@ -68,13 +61,20 @@ function SignUp() {
                     <InputContainer>
                         <label htmlFor="password">Senha</label>
                         <Input type={visible ? 'text' : 'password'} id="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength="8" required />
-                        {passwordVisibility()}
+                        
+                        <button type='button' className='eye' style={{height: '20px', width: '20px'}} onClick={() => setVisible( prev => !prev)}>
+                            {visible ? <BsEyeSlashFill  size='20px' /> : <BsEyeFill size='20px'/>}
+                        </button>
                     </InputContainer>
 
                     <InputContainer>
                         <label htmlFor="password_confirmation">Confirme sua senha</label>
                         <Input type={visible ? 'text' : 'password'} id="password_confirmation" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength="8" required error={!match}/>
-                        {passwordVisibility()}
+
+                        <button type='button' className='eye' style={{height: '20px', width: '20px'}} onClick={() => setVisible( prev => !prev)}>
+                            {visible ? <BsEyeSlashFill  size='20px' /> : <BsEyeFill size='20px'/>}
+                        </button>
+
                         {match ? <InputMessage>Sua senha deve ter no mínimo 8 caracteres</InputMessage> : <InputMessage error >As senhas não conferem</InputMessage> }
                     </InputContainer>
 
