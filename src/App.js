@@ -5,20 +5,18 @@ import {
     Redirect,
     Switch,
 } from 'react-router-dom';
+
+import './App.scss';
 import { GlobalStyle } from './GlobalStyles.js';
+
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home/index.js';
-import DenunciationModal from './components/DenunciationModal/index.js';
-import ContactModal from './components/ContactModal/index.js';
-
-import './App.scss';
-import Navbar from './components/Navbar/index.js';
-import About from './pages/About/index.js';
-import Footer from './components/Footer/index.js';
+import Post from './pages/Post/index.js';
 import Profile from './pages/Profile/index.js';
+import About from './pages/About/index.js';
 import Contacts from './pages/backoffice/Contacts/index.js';
 import Users from './pages/backoffice/Users/index.js';
 import EditUser from './pages/backoffice/EditUser/index.js';
@@ -26,6 +24,11 @@ import Tags from './pages/backoffice/Tags/index.js';
 import TagPatch from './pages/backoffice/TagPatch/index.js';
 import PostEdit from './pages/backoffice/PostEdit/index.js';
 import Publications from './pages/backoffice/Publications/index.js';
+
+import DenunciationModal from './components/DenunciationModal/index.js';
+import ContactModal from './components/ContactModal/index.js';
+import Navbar from './components/Navbar/index.js';
+import Footer from './components/Footer/index.js';
 import Building from './components/Building/index.js';
 
 function App() {
@@ -97,6 +100,10 @@ function App() {
 
                             <Route path='/user/:id'>
                                 <Profile />
+                            </Route>
+
+                            <Route path='/post/:id'>
+                                <Post />
                             </Route>
 
                             <Route path='/backoffice/publications' exact>

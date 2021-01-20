@@ -24,6 +24,9 @@ function Publications() {
                 window.location.reload();
             }
         })
+        .catch( err => {
+            window.alert('Não foi possivel apagar a publicação. \n ', err.text);
+        })
     }
 
     function formatDate(date) {
@@ -57,7 +60,7 @@ function Publications() {
                                 <td className="date">{ formatDate(row.created_at) }</td>
                                 <td className='title'>{ row.name.slice(0,40) }...</td>
                                 <td>{ formatTags(row.tags) }...</td>
-                                <td><Link to={'publications/edit/' + row.id}>Exibir</Link></td>
+                                <td><Link to={'/post/' + row.id}>Exibir</Link></td>
                                 <td><button onClick={ () => handleDelete(row.id) }>Excluir</button></td>
                             </tr>
                         );

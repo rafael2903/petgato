@@ -19,9 +19,9 @@ const PostEdit = ({type}) => {
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
-    const [text, setText] = useState({});
+    const [text, setText] = useState('');
     const [tags, setTags] = useState([]);
-    const [selectedTags, setSelectedTags] = useState({});
+    const [selectedTags, setSelectedTags] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
 
     const [redirect, setRedirect] = useState(false);
@@ -40,10 +40,22 @@ const PostEdit = ({type}) => {
     }, [type, location.state]);
 
 
-    const handleToggle = ({ target }) => setSelectedTags(s => ({ ...s, [target.name]: !s[target.name] }));
+    const toggleTag = (tag) => {
+        let auxTags = selectedTags;
+        if(auxTags.includes(tag)){
+            auxTags = auxTags.filter( (value) => value !== tag);
+        } else {
+            auxTags.push(tag);
+        }
+        setSelectedTags(auxTags);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const image = new FormData();
+        image.append('File', selectedFile);
+
         if(type === 'edit'){
             axios.put(`http://localhost:3000/posts/${id}`, {name, content: text, banner_image: selectedFile})
             .then( res => {
@@ -57,9 +69,15 @@ const PostEdit = ({type}) => {
                 setRedirect(true);
             })
         } else {
-            axios.post(`http://localhost:3000/posts`, {name, content: text, banner_image: selectedFile})
+            axios.post(`http://localhost:3000/posts`, {name, content: text, banner_image: image})
             .then( res => {
                 if(res.status === 201){
+                    const postId = res.data.id;
+
+                    selectedTags.forEach(tagId => {
+                        axios.post(`http://localhost:3000/post_has_tags`, 
+                        {post_id: postId, tag_id: tagId});
+                    });
                     window.alert("Publicado com sucesso!");
                 }
                 setRedirect(true);
@@ -67,7 +85,6 @@ const PostEdit = ({type}) => {
             .catch( err => {
                 window.alert("Não foi possivel criar\n" + err);
                 setRedirect(true);
-                console.log(err);
             })
         }
     }
@@ -89,15 +106,14 @@ const PostEdit = ({type}) => {
                 <br />
                 <InputContainer>
                     <ReactQuill theme="snow" modules={modules} formats={formats} 
-                    value={text} onChange={(e) => setText(e.valueOf())} required
-                    style={{height:'500px', borderBlockColor:'red'}}/>
+                    value={text} onChange={(e) => setText(e.valueOf())} required />
                 </InputContainer>
 
                 <br /><br />
                 <InputContainer>
                     <label htmlFor="imagem">Escolha uma imagem de capa:</label>
                     <input type='file' id="imagem" style={{marginTop:'10px' }}
-                    value={selectedFile} onChange={(e) => setSelectedFile(e.target.files[0])} />
+                    onChange={ e => setSelectedFile(e.target.files[0]) } />
                 </InputContainer>
 
                 <br /><br />
@@ -105,10 +121,12 @@ const PostEdit = ({type}) => {
                     <label htmlFor="tags">Escolha pelo menos uma tag:</label>
                     <TagsContainer>
                         {tags.map( tag => 
-                            <>
-                            <input type='checkbox' name={'tag:'+tag.name} title={tag.name}/>
-                            &nbsp;{tag.name}&nbsp;&nbsp;&nbsp;
-                            </>
+                            <div>
+                            <input type='checkbox' name={'tag:'+tag.name}
+                            title={tag.name} onClick={() => {toggleTag(tag.id)}}
+                            style={{marginLeft: '18px', marginRight: '3px'}} />
+                            {tag.name}
+                            </ div>
                         )}
                     </TagsContainer>
                 </InputContainer>
@@ -117,7 +135,7 @@ const PostEdit = ({type}) => {
             <AuthButton hollow>GERENCIAR TAGS</AuthButton>
             </Link>
             <br /><br />
-
+            
             <AuthButton type="submit">PUBLICAR</AuthButton> &nbsp;&nbsp;&nbsp;
             <AuthButton onClick={() => setRedirect(true)} hollow> VOLTAR</AuthButton>
             </form>

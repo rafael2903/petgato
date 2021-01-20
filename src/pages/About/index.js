@@ -1,7 +1,7 @@
 import Main from "../../components/Main";
 import cintia from "../../assets/cintia_lorenzzo.jpg";
 import mandragora from "../../assets/mandragora.jpg";
-import floquinho from "../../assets/floquinho.jpg";
+import floquinho from "../../assets/Floquinho.jpg";
 import { FaFacebookSquare } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaTwitterSquare } from 'react-icons/fa';
